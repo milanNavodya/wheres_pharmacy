@@ -7,6 +7,8 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(40), unique=True)
     name = db.Column(db.String(200))
+    password = db.Column(db.String(100))
+    confirmed_password = db.Column(db.String(100))
     street = db.Column(db.String(100))
     city = db.Column(db.String(100))
     state = db.Column(db.String(100))
@@ -18,9 +20,12 @@ class User(UserMixin, db.Model):
     position = db.Column(db.String(100))
     category = db.Column(db.String(100))
 
-    def __init__(self, email, name, street, city, state, county, mobile, user_type, position, category):
+    def __init__(self, email, name, street, city, state, county, mobile, user_type, position, category, password,
+                 confirmed_password):
         self.email = email
         self.name = name
+        self.password = password
+        self.confirmed_password = confirmed_password
         self.street = street
         self.city = city
         self.state = state
