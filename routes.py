@@ -41,6 +41,7 @@ def signup():  # define the signup function
         email = request.form.get('email')
         name = request.form.get('fullname')
         password = request.form.get('password')
+        gender = request.form.get('gender')
         user = User.query.filter_by(email=email).first()
         # if this returns a user, then the email already exists in database
         if user:  # if a user is found, we want to redirect back to signup page so user can try again
