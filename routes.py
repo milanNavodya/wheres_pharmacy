@@ -38,18 +38,28 @@ def signup():  # define the signup function
     if request.method == 'GET':  # If the request is GET we return the sign up page and forms
         return render_template('signup.html')
     else:  # if the request is POST, then we check if the email doesn't already exist and then we save data
-        email = request.form.get('email')
         name = request.form.get('fullname')
+        email = request.form.get('email')
         password = request.form.get('password')
         gender = request.form.get('gender')
+        dob = request.form.get('dob')
+        street = request.form.get('street')
+        city = request.form.get('city')
+        state = request.form.get('state')
+        county = request.form.get('county')
+        address = street + ", " + city + ", " + state + ", " + county + "."
+        # address = request.form.get('address')
+        mobile = request.form.get('mobile')
+        user_type = "patient"
         user = User.query.filter_by(email=email).first()
         # if this returns a user, then the email already exists in database
         if user:  # if a user is found, we want to redirect back to signup page so user can try again
-            flash('Email address already exists')
+            flash('Email address already exists.')
             return redirect(url_for('routes.signup'))
 
         # create a new user with the form data. Hash the password so the plaintext version isn't saved.
-        new_user = User(email=email, name=name, password=generate_password_hash(password))
+        new_user = User(full_name=name, email=email, password=generate_password_hash(password), gender=gender, dob=dob,
+                        address=address, mobile=mobile, user_type=user_type)
         # add the new user to the database
         db.session.add(new_user)
         db.session.commit()
