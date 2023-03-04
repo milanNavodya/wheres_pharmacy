@@ -17,7 +17,7 @@
     <a href="{{ url_for('routes.signup') }}">
         <div class="labelexpanded">
             <div class="radio-btns">
-                <img src="user-ninja.png"/>
+                <img src="{{ url_for('static', filename='images/type-user.png') }}"/>
                 <p> Patient </p>
             </div>
         </div>
@@ -26,7 +26,7 @@
     <a href="{{ url_for('views.signup_pharmacist') }}">
         <div class="labelexpanded">
             <div class="radio-btns">
-                <img src="user-astronaut.png">
+                <img src="{{ url_for('static', filename='images/type-pharmacy.png') }}"/>
                 <p> Pharmacy </p>
             </div>
         </div>
@@ -35,7 +35,7 @@
     <a href="{{ url_for('views.signup_doctor') }}">
         <div class="labelexpanded">
             <div class="radio-btns">
-                <img src="Doctoricon.png"/>
+                <img src="{{ url_for('static', filename='images/type-doctor.png') }}"/>
                 <p> Doctor </p>
             </div>
         </div>
