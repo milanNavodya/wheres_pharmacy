@@ -1,43 +1,48 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="PatientMenu.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="{{ url_for('static', filename='css/patient_menu.css') }}" rel="stylesheet">
 
-  </head>
-  <body>
+</head>
+<body>
 
-        <div class="container-fluid">
-            
-            <h1>Patient Profile</h1>
-          
-          
-            <!-- <form class="search-bar">
-              <div class="search-bar-group">
-                <table>
-                <tr><td><input class="form-control" type="search" placeholder="Search" aria-label="Search"></td><td><button class="btn-search" type="submit">Search<i class="fas fa-search"></i></button></td></tr>
-            </table>
-              </div>
-            </form> -->
-          
-        </div>
+<div class="container-fluid">
 
-        <hr/>
+    <h1>Patient Profile</h1>
+
+
+    <!-- <form class="search-bar">
+      <div class="search-bar-group">
+        <table>
+        <tr><td><input class="form-control" type="search" placeholder="Search" aria-label="Search"></td><td><button class="btn-search" type="submit">Search<i class="fas fa-search"></i></button></td></tr>
+    </table>
+      </div>
+    </form> -->
+
+</div>
+
+<hr/>
 <table>
-        <div class="container">
+    <div class="container">
 
-            <tr>
-                <td>
+        <tr>
+            <td>
                 <div class="row big-button">
-                    <a href="PatientProfile2.html">
-                    <!--text-->
-                    <div class="col text-container centerbox">
-                        <p>Settings</p>
-                    </div>
-                    <!--image-->
-                    <div class="col-md-7 image-container"><img src="https://cdn1.vectorstock.com/i/thumb-large/25/00/gear-icon-flat-engineering-symbol-isolated-on-whi-vector-21462500.jpg" alt="sales" class="images img-fluid"/></div></a>
+                    <a href="{{ url_for('views.settings_user_profile') }}">
+                        <!--text-->
+                        <div class="col text-container centerbox">
+                            <p>Settings</p>
+                        </div>
+                        <!--image-->
+                        <div class="col-md-7 image-container">
+                            <img src="https://cdn1.vectorstock.com/i/thumb-large/25/00/gear-icon-flat-engineering-symbol-isolated-on-whi-vector-21462500.jpg"
+                                 alt="sales" class="images img-fluid"/>
+                        </div>
+                    </a>
 
                 </div>
             </td>
@@ -45,58 +50,66 @@
             <td>
                 <div class="row big-button">
                     <a href="NewBuyMedicine.html">
-                    <!--text-->
-                    <div class="col text-container centerbox">
-                        <p>Map</p>
-                    </div>
-                    <!--image-->
-                    <div class="col-md-7 image-container"><img src="https://th.bing.com/th/id/R.23029fc4443d56eb35c9113d0d003bf9?rik=6CxDWZmUmMGM2w&riu=http%3a%2f%2fsuperawesomevectors.com%2fwp-content%2fuploads%2f2015%2f01%2fflat-map-icon.jpg&ehk=FEQtsLlmGmV99vDIWBgNKIWDiYmpwTGWMud4Att0KzA%3d&risl=&pid=ImgRaw&r=0" alt="inventory" class="images img-fluid"/></div>
-                </a>
+                        <!--text-->
+                        <div class="col text-container centerbox">
+                            <p>Map</p>
+                        </div>
+                        <!--image-->
+                        <div class="col-md-7 image-container"><img
+                                src="https://th.bing.com/th/id/R.23029fc4443d56eb35c9113d0d003bf9?rik=6CxDWZmUmMGM2w&riu=http%3a%2f%2fsuperawesomevectors.com%2fwp-content%2fuploads%2f2015%2f01%2fflat-map-icon.jpg&ehk=FEQtsLlmGmV99vDIWBgNKIWDiYmpwTGWMud4Att0KzA%3d&risl=&pid=ImgRaw&r=0"
+                                alt="inventory" class="images img-fluid"/></div>
+                    </a>
                 </div>
             </td>
-            </tr>
+        </tr>
 
-        </div>
-       
+    </div>
 
-    
-        <div class="container">
 
-            <tr>
-                <td>
+    <div class="container">
+
+        <tr>
+            <td>
                 <div class="row big-button">
                     <a href="PatientProfile2.html">
-                    <!--text-->
-                    <div class="col text-container centerbox">
-                        <p>My Medical <br>Reports</p>
-                    </div>
-                    <!--image-->
-                    <div class="col-md-7 image-container"><img src="MymedicalReport.jpeg" alt="sales" class="images img-fluid"/></div></a>
+                        <!--text-->
+                        <div class="col text-container centerbox">
+                            <p>My Medical <br>Reports</p>
+                        </div>
+                        <!--image-->
+                        <div class="col-md-7 image-container"><img
+                                src="{{ url_for('static', filename='images/my_medical_report.jpeg') }}" alt="sales"
+                                class="images img-fluid"/></div>
+                    </a>
 
                 </div>
             </td>
             <td class="gap"></td>
 
-         
+
             <td>
                 <div class="row big-button">
                     <a href="NewBuyMedicine.html">
-                    <!--text-->
-                    <div class="col text-container centerbox">
-                        <p>Buy Medicine</p>
-                    </div>
-                    <!--image-->
-                    <div class="col-md-7 image-container"><img src="Buynow.jpg" alt="inventory" class="images img-fluid"/></div>
-                </a>
+                        <!--text-->
+                        <div class="col text-container centerbox">
+                            <p>Buy Medicine</p>
+                        </div>
+                        <!--image-->
+                        <div class="col-md-7 image-container"><img
+                                src="{{ url_for('static', filename='images/buy_now.jpg') }}" alt="inventory"
+                                class="images img-fluid"/></div>
+                    </a>
                 </div>
             </td>
-            </tr>
+        </tr>
 
-        </div>
+    </div>
 
-    </table>   
-            <div>
-              <a href="AppointmentBooking.html"><button class="button-place-an-appointment" role="button">Place an Appointment</button></a>
-              </div>
+</table>
+<div>
+    <a href="AppointmentBooking.html">
+        <button class="button-place-an-appointment" role="button">Place an Appointment</button>
+    </a>
+</div>
 </body>
 </html>

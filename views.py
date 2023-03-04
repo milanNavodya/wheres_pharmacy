@@ -51,6 +51,12 @@ def index_user():
     return render_template('patient_menu.html')
 
 
+@views.route('/user/setting')
+@login_required
+def settings_user_profile():
+    return render_template('patient_profile_settings.html')
+
+
 @views.route('/user/doctor')
 @login_required
 def doctor_for_user():
@@ -61,3 +67,9 @@ def doctor_for_user():
 @login_required
 def place_appointment():
     return redirect('appointment_booking.html')
+
+
+@views.route('/pharmacist')
+@login_required
+def index_pharmacist():
+    return render_template('pharmacy_profile.html')

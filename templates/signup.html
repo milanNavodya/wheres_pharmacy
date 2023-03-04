@@ -21,14 +21,6 @@
         <div class="container">
             <div class="signup-content">
                 <div class="signup-form">
-                    {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                    <div class="notification is-danger">
-                        {{ messages[0] }}
-                    </div>
-                    {% endif %}
-                    {% endwith %}
-
                     <h2 class="form-title">Sign up</h2>
                     <form method="POST" class="register-form" id="register-form" action="/signup">
                         <!-- Full Name -->
