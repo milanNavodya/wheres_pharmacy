@@ -29,7 +29,7 @@ def login():  # define login page function
 
         login_user(user, remember=remember)
         if user.user_role == 'patient':
-            return redirect(url_for(''))
+            return redirect(url_for('views.index_user'))
         elif user.user_role == 'doctor':
             return redirect(url_for('views.index_doctor'))
         elif user.user_role == 'pharmacist':

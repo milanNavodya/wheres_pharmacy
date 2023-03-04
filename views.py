@@ -36,3 +36,28 @@ def signup_pharmacist():
 # Doctor profile
 def index_doctor():
     return render_template('doctor_profile.html')
+
+
+@views.route('/doctor/appointments')
+@login_required
+def doctor_appointments():
+    return render_template('doctor_profile_appointments.html')
+
+
+@views.route('/user')
+@login_required
+# Doctor profile
+def index_user():
+    return render_template('patient_menu.html')
+
+
+@views.route('/user/doctor')
+@login_required
+def doctor_for_user():
+    return render_template('user_doctor_profile.html')
+
+
+@views.route('/user/appointment', methods=['POST'])
+@login_required
+def place_appointment():
+    return redirect('appointment_booking.html')
