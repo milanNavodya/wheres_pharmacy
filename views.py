@@ -11,3 +11,21 @@ views = Blueprint('views', __name__)
 # login page that return 'login'
 def index():
     return render_template('index.html')
+
+
+@views.route('/user-type')
+# user can select user type in this page
+def user_type():
+    return render_template('account_type.html')
+
+
+@views.route('/signup-doc')
+# Return view for normal user
+def signup_doctor():
+    return render_template('signup_doctor.html')
+
+
+@views.route('/signup-phar')
+# # When a pharmacist sign up into system
+def signup_pharmacist():
+    return render_template('signup_pharmacist.html')

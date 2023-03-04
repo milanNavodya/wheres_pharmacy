@@ -15,10 +15,14 @@ class User(UserMixin, db.Model):
     user_role = db.Column(db.String(20))
 
     # For doctor type users
-    # position = db.Column(db.String(100))
-    # category = db.Column(db.String(100))
+    position = db.Column(db.String(100))
+    category = db.Column(db.String(100))
 
-    def __init__(self, full_name, email, password, gender, dob, address, mobile, user_role):
+    # For Pharmacist
+    pharmacy_reg_no = db.Column(db.String(100))
+
+    def __init__(self, full_name, email, password, gender, dob, address, mobile, user_role, position, category,
+                 pharmacy_reg_no):
         self.full_name = full_name
         self.email = email
         self.password = password
@@ -28,5 +32,7 @@ class User(UserMixin, db.Model):
         self.mobile = mobile
         self.user_role = user_role
         # For Doctor
-        # self.position = position
-        # self.category = category
+        self.position = position
+        self.category = category
+        # For Pharmacist
+        self.pharmacy_reg_no = pharmacy_reg_no

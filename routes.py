@@ -48,18 +48,27 @@ def signup():  # define the signup function
         state = request.form.get('state')
         county = request.form.get('county')
         address = street + ", " + city + ", " + state + ", " + county + "."
-        # address = request.form.get('address')
         mobile = request.form.get('mobile')
         user_type = "patient"
-        user = User.query.filter_by(email=email).first()
-        # if this returns a user, then the email already exists in database
-        if user:  # if a user is found, we want to redirect back to signup page so user can try again
+        # For Doctor registration
+        position = request.form.get('position')
+        category = request.form.get('category')
+        # For Pharmacist Registration
+        pharmacy_reg_no = request.form.get('pharmacy_reg_no')
+        if position and category:
+            user_type = "doctor"
+        if pharmacy_reg_no:
+            user_type = "pharmacist"
+
+        user = User.query.filter_by(email=email).first()  # return user if email already exist
+        if user:  # if that user already registered return again to sign up page
             flash('Email address already exists.')
             return redirect(url_for('routes.signup'))
 
         # create a new user with the form data. Hash the password so the plaintext version isn't saved.
         new_user = User(full_name=name, email=email, password=generate_password_hash(password), gender=gender, dob=dob,
-                        address=address, mobile=mobile, user_role=user_type)
+                        address=address, mobile=mobile, position=position, category=category,
+                        pharmacy_reg_no=pharmacy_reg_no, user_role=user_type)
         # add the new user to the database
         db.session.add(new_user)
         db.session.commit()
