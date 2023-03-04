@@ -80,8 +80,13 @@ def signup():  # define the signup function
         return redirect(url_for('routes.login'))
 
 
-@routes.route('/logout')  # path for logout
+@routes.route('/logout', methods=['POST'])  # path for logout
 @login_required
 def logout():  # function for logout action
     logout_user()
+    return redirect(url_for('views.index'))
+
+
+@routes.route('/index')
+def index():
     return redirect(url_for('views.index'))
