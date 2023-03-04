@@ -26,6 +26,13 @@ def signup_doctor():
 
 
 @views.route('/signup-phar')
-# # When a pharmacist sign up into system
+# When a pharmacist sign up into system
 def signup_pharmacist():
     return render_template('signup_pharmacist.html')
+
+
+@views.route('/doctor')
+@login_required
+# Doctor profile
+def index_doctor():
+    return render_template('doctor_profile.html')

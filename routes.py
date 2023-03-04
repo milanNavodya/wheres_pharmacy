@@ -20,15 +20,20 @@ def login():  # define login page function
 
         if not user:
             flash('Please sign up before!')
-            return redirect(url_for('routes.signup'))
+            return redirect(url_for('views.user_type'))
         elif not check_password_hash(user.password, password):
             flash('Please check your login details and try again.')
             return redirect(url_for('routes.login'))  # if the user doesn't exist or password is wrong, reload the page
         # if the above check passes, then we know the user has the right credential's
-        # session['loggedin'] = True
         session['id'] = user.id
 
         login_user(user, remember=remember)
+        if user.user_role == 'patient':
+            return redirect(url_for(''))
+        elif user.user_role == 'doctor':
+            return redirect(url_for('views.index_doctor'))
+        elif user.user_role == 'pharmacist':
+            return redirect(url_for(''))
 
         return redirect(url_for('views.index'))
 
