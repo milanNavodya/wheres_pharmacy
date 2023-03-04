@@ -1,0 +1,49 @@
+h1 {
+    margin-left: 540px;
+}
+
+.leftside {
+    margin-top: 50px;
+    margin-left: 45%;
+    max-width: fit-content;
+
+}
+
+
+.labelexpanded {
+    font-size: 15px;
+    padding: 2px;
+}
+
+.labelexpanded > input {
+    display: none;
+
+}
+
+.labelexpanded input:checked + .radio-btns {
+    background-color: #253c6a;
+    color: #fff;
+}
+
+.radio-btns {
+    width: 57px;
+    height: 59px;
+    border-radius: 15px;
+    position: relative;
+    text-align: center;
+    padding: 50px 50px;
+    box-shadow: 0 1px #c3c3c3;
+    cursor: pointer;
+    background-color: #eaeaea;
+    margin-right: 15px;
+
+}
+
+.radio-btns > img {
+    width: 28px;
+    height: 30px;
+}
+
+body {
+    background-image: url("../images/login_background.png");
+}
