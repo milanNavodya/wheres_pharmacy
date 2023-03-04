@@ -34,8 +34,8 @@ def login():  # define login page function
             return redirect(url_for('views.index_doctor'))
         elif user.user_role == 'pharmacist':
             return redirect(url_for(''))
-
-        return redirect(url_for('views.index'))
+        else:
+            return redirect(url_for('views.user_type'))
 
 
 @routes.route('/signup', methods=['GET', 'POST'])  # we define the sign up path
