@@ -23,9 +23,6 @@
                     <img src="{{ url_for('static', filename='images/wheres-pharmacy-logo.png')}}" alt="website logo">
                     <span>Where's Pharmacy</span>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-                    <span><img src="{{url_for('static', filename='images/Bell.png')}}" alt=""></span>
-                </button>
 <!--                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">-->
 <!--                    <ul class="navbar-nav">-->
 <!--                        <li class="nav-item">-->
@@ -50,8 +47,8 @@
                 <h3>Anywhere</h3>
                 <h3>Anytime</h3>
                 <p>Find a Pharmacy and a doctor in one place</p>
-                <a href="{{ url_for('views.user_type') }}">Sign Up</a>
-                <a href="{{ url_for('routes.login') }}">Log In</a>
+                <a style="border-radius: 10px;" href="{{ url_for('views.user_type') }}">Sign Up</a>
+                <a style="border-radius: 10px;" href="{{ url_for('routes.login') }}">Log In</a>
             </div>
             <div class="col-12 col-lg-8" id="landing-container-img">
                 <img src="{{url_for('static', filename='images/background.jpg')}}" alt="Where Pharmacy Home">
