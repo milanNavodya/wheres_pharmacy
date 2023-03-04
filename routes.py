@@ -14,7 +14,7 @@ def login():  # define login page function
     else:  # if the request is POST then we check if the user exist and with te right password
         email = request.form.get('email')
         password = request.form.get('password')
-        remember = True if request.form.get('remember') else False
+        remember = True if request.form.get('remember-me') else False
         user = User.query.filter_by(email=email).first()  # check if the user actually exists
         # take the user-supplied password, hash it, and compare it to the hashed password in the database
 
@@ -30,7 +30,7 @@ def login():  # define login page function
 
         login_user(user, remember=remember)
 
-        return redirect(url_for('views.dashboard'))
+        return redirect(url_for('views.index'))
 
 
 @routes.route('/signup', methods=['GET', 'POST'])  # we define the sign up path
@@ -59,7 +59,7 @@ def signup():  # define the signup function
 
         # create a new user with the form data. Hash the password so the plaintext version isn't saved.
         new_user = User(full_name=name, email=email, password=generate_password_hash(password), gender=gender, dob=dob,
-                        address=address, mobile=mobile, user_type=user_type)
+                        address=address, mobile=mobile, user_role=user_type)
         # add the new user to the database
         db.session.add(new_user)
         db.session.commit()
