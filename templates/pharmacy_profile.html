@@ -12,20 +12,20 @@
         <div id="icon-row-box" class="container centerbox">
             <div class="icon-row">
                 <a href="https://www.example.com">
-                    <img class="icons" src="{{ url_for('static', filename='images/bell.png') }}" alt="Icon 1">
+                    <img class="icons" src="{{ url_for('static', filename='images/bell.png') }}" alt="Notification">
                 </a>
                 <a href="https://www.example.com">
-                    <img class="icons" src="{{ url_for('static', filename='images/tele.png') }}" alt="Icon 2">
+                    <img class="icons" src="{{ url_for('static', filename='images/tele.png') }}" alt="Contact">
                 </a>
                 <a href="https://www.example.com">
-                    <img class="icons" src="{{ url_for('static', filename='images/msg.png') }}" alt="Icon 3">
+                    <img class="icons" src="{{ url_for('static', filename='images/msg.png') }}" alt="Message">
                 </a>
             </div>
         </div>
           
         <div class="container">
 
-            <a href="Pharmacy_Sales.html">
+            <a href="{{ url_for('views.sale_order_details') }}">
                 <div class="row big-button">
                     <!--text-->
                     <div class="col text-container centerbox">
@@ -36,7 +36,7 @@
                 </div>
             </a>
 
-            <a href="Pharmacy_Inventory.html">
+            <a href="{{ url_for('views.pharmacy_inventory') }}">
                 <div class="row big-button">
                     <!--text-->
                     <div class="col text-container centerbox">

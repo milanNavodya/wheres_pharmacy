@@ -66,10 +66,22 @@ def doctor_for_user():
 @views.route('/user/appointment', methods=['POST'])
 @login_required
 def place_appointment():
-    return redirect('appointment_booking.html')
+    return render_template('appointment_booking.html')
 
 
 @views.route('/pharmacist')
 @login_required
 def index_pharmacist():
     return render_template('pharmacy_profile.html')
+
+
+@views.route('/pharmacist/sales')
+@login_required
+def sale_order_details():
+    return render_template('pharmacy_sales.html')
+
+
+@views.route('/pharmacist/sales')
+@login_required
+def pharmacy_inventory():
+    return render_template('pharmacy_inventory.html')
