@@ -37,6 +37,7 @@ def signup_user():
     return render_template('signup_user.html')
 
 
+# Routes for doctors
 @views.route('/doctor')
 @login_required
 # Doctor profile
@@ -50,6 +51,7 @@ def doctor_appointments():
     return render_template('doctor_profile_appointments.html')
 
 
+# Routes for Patients
 @views.route('/user')
 @login_required
 # Doctor profile
@@ -69,12 +71,19 @@ def doctor_for_user():
     return render_template('user_doctor_profile.html')
 
 
+@views.route('/user/buy-med')
+@login_required
+def buy_medicine():
+    return render_template('patient_buy_medicine.html')
+
+
 @views.route('/user/appointment', methods=['POST'])
 @login_required
 def place_appointment():
     return render_template('appointment_booking.html')
 
 
+# Routes for Pharmacists
 @views.route('/pharmacist')
 @login_required
 def index_pharmacist():
