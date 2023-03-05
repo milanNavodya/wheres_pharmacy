@@ -31,6 +31,12 @@ def signup_pharmacist():
     return render_template('signup_pharmacist.html')
 
 
+@views.route('/signup-usr')
+# When a normal user try to sign up
+def signup_user():
+    return render_template('signup_user.html')
+
+
 @views.route('/doctor')
 @login_required
 # Doctor profile

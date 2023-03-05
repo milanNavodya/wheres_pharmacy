@@ -1,0 +1,26 @@
+{% extends "signup.html" %}
+
+{% block user_birthday %}
+<!-- Date of Birth -->
+<div class="form-group">
+    <label for="dob"><i class="zmdi zmdi-cake"></i></label>
+    <input type="date" name="dob" id="dob" placeholder="Date of Birth"/>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="form-group">
+    <table>
+        <tbody>
+        <tr>
+            <td><input type="radio" id="male" name="gender" value="male"></td>
+            <td>Male</td>
+            <td><input type="radio" id="female" name="gender" value="female"></td>
+            <td>Female</td>
+            <td><input type="radio" id="other" name="gender" value="other"></td>
+            <td>Other</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

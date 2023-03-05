@@ -41,7 +41,7 @@ def login():  # define login page function
 @routes.route('/signup', methods=['GET', 'POST'])  # we define the sign up path
 def signup():  # define the signup function
     if request.method == 'GET':  # If the request is GET we return the sign up page and forms
-        return render_template('signup.html')
+        return redirect(url_for('views.user_type'))
     else:  # if the request is POST, then we check if the email doesn't already exist and then we save data
         name = request.form.get('fullname')
         email = request.form.get('email')
@@ -68,7 +68,7 @@ def signup():  # define the signup function
         user = User.query.filter_by(email=email).first()  # return user if email already exist
         if user:  # if that user already registered return again to sign up page
             flash('Email address already exists.')
-            return redirect(url_for('routes.signup'))
+            return redirect(url_for('views.user_type'))
 
         # create a new user with the form data. Hash the password so the plaintext version isn't saved.
         new_user = User(full_name=name, email=email, password=generate_password_hash(password), gender=gender, dob=dob,
