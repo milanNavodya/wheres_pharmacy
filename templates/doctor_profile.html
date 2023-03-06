@@ -12,11 +12,11 @@
 <div class="logocaption"><h2>Dr. David Warner</h2></div>
 <div class="caption text-left">Oncologist</div>
 <h1>Doctor Profile</h1>
-<div>
-<!--    <form action="{{ url_for('routes.logout') }}" method="post">-->
-<!--        <button type="submit" style="">Logout</button>-->
-<!--    </form>-->
-    <img src="{{ url_for('static', filename='images/profile_image.jpg') }}" class="profile-photo" alt="Doctor profile">
+<div class="profile-photo">
+    <!--    <form action="{{ url_for('routes.logout') }}" method="post">-->
+    <!--        <button type="submit" style="">Logout</button>-->
+    <!--    </form>-->
+    <img src="{{ url_for('static', filename='images/profile_image.jpg') }}" alt="Doctor profile">
 </div>
 
 <div class="time">
@@ -59,16 +59,16 @@
         </div>
     </div>
     &nbsp;
-    <div class="card">
-        <img src="{{ url_for('static', filename='images/patient2.png') }}" class="card-img-top"
-             alt="Today's Appointments"/>
-        <div class="card-body">
-            <h1 class="card-title">49</h1>
-            <a href="{{ url_for('views.doctor_appointments') }}">
+    <a href="{{ url_for('views.doctor_appointments') }}">
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/patient2.png') }}" class="card-img-top"
+                 alt="Today's Appointments"/>
+            <div class="card-body">
+                <h1 class="card-title">49</h1>
                 <p class="card-title">Today's Appointments</p>
-            </a>
+            </div>
         </div>
-    </div>
+    </a>
 
 </div>
 </body>

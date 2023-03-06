@@ -1,144 +1,156 @@
-h1{
+h1 {
     margin-left: 44%;
     margin-top: -70px;
-    
+
 }
 
-doctor_name{
-  margin-top: 20px;
-  margin-left: 5px;
+a {
+    text-decoration: none;
+}
+
+doctor_name {
+    margin-top: 20px;
+    margin-left: 5px;
 }
 
 .profile-photo {
     width: 100px;
     height: 100px;
-    margin-left: 1400px;
+    margin-left: 1200px;
     margin-top: -50px;
- }
+}
 
- .time {
-  margin-left: 675px;
-  margin-top: -5%;
- }
+.profile-photo img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.time {
+    margin-left: 675px;
+    margin-top: -5%;
+}
 
 
-
-
- .wrapper {
-	position: absolute;
-	top: 15%;
-	margin-left: 50%;
-	transform: translate(-50%, -50%) rotateY(180deg);
-	display: flex;
+.wrapper {
+    position: absolute;
+    top: 15%;
+    margin-left: 50%;
+    transform: translate(-50%, -50%) rotateY(180deg);
+    display: flex;
 
 }
+
 .wrapper input {
-	display: none;
+    display: none;
 }
-.wrapper label {
-	display: block;
-	cursor: pointer;
-	width: 30px;
-}
-.wrapper label:before {
-	content: '★';
 
-	position: relative;
-	display: block;
-	font-size: 30px;
-	color: black;
+.wrapper label {
+    display: block;
+    cursor: pointer;
+    width: 30px;
 }
+
+.wrapper label:before {
+    content: '★';
+    position: relative;
+    display: block;
+    font-size: 30px;
+    color: black;
+}
+
 .wrapper label:after {
-	content: '★';
-	position: absolute;
-  
-	display: block;
-	font-size: 30px;
-	color: deeppink;
-	top: 0;
-	opacity: 0;
-	transition: .6s;
+    content: '★';
+    position: absolute;
+
+    display: block;
+    font-size: 30px;
+    color: deeppink;
+    top: 0;
+    opacity: 0;
+    transition: .6s;
 }
-.wrapper label:hover:after, .wrapper label:hover~label:after, .wrapper input:checked~label:after {
-	opacity: 1;
+
+.wrapper label:hover:after, .wrapper label:hover ~ label:after, .wrapper input:checked ~ label:after {
+    opacity: 1;
 }
 
 
 .icon-row {
-  display: flex;
+    display: flex;
 }
 
 .icons {
-  width: 40px;
-  height: 40px;
-  margin:50px 20px 5px 30px;
- 
+    width: 40px;
+    height: 40px;
+    margin: 50px 20px 5px 30px;
+
 }
 
 .centerbox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
 .column {
-  float: left;
-  width: 25%;
-  padding: 0 10px;
+    float: left;
+    width: 25%;
+    padding: 0 10px;
 
 }
-
 
 
 .card {
- width: 400px;
- background-color: rgb(77, 252, 159);
- height:300px;
- padding-top: 5px;
-  padding-right: 3px;
-  padding-bottom: 5px;
-  padding-left: 8px;
-  margin:50px 20px 5px 30px;
+    width: 400px;
+    background-color: rgb(77, 252, 159);
+    height: 300px;
+    padding-top: 5px;
+    padding-right: 3px;
+    padding-bottom: 5px;
+    padding-left: 8px;
+    margin: 50px 20px 5px 30px;
 }
 
-.card-body{
-  width: 100px;
-  height: 200px;
+.card-body {
+    width: 100px;
+    height: 200px;
 }
 
 .card-body h1 {
- text-align: center;
- margin-top: 20px;
+    text-align: center;
+    margin-top: 20px;
+    color: black;
 }
 
 .card-body p {
-  text-align: center;
-  font-size: 20px;
-  font-weight: 700;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: black;
 }
 
 
 .card-title {
-  width:250px;
-  margin-left: 70%;
+    width: 250px;
+    margin-left: 70%;
 
-  
+
 }
 
-.card-img-top{
-  width: 100px;
-  height: 100px;
-  margin-top: 5%;
-  margin-left: 35%;
+.card-img-top {
+    width: 100px;
+    height: 100px;
+    margin-top: 5%;
+    margin-left: 35%;
 }
 
-.outer{
-  border: 2px solid white;
-        height: auto;
-        padding: 10px 0;
-        display: flex;
-        justify-content: center;
-        
+.outer {
+    border: 2px solid white;
+    height: auto;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+
 }
 
