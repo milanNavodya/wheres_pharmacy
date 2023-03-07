@@ -7,16 +7,21 @@
     <title>Doctor Profile</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/doctor_profile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/logout.css') }}">
 </head>
 <body style="background-color: #bee0ec;">
-<div class="logocaption"><h2>Dr. David Warner</h2></div>
-<div class="caption text-left">Oncologist</div>
+<div class="logocaption"><h2>{{name}}</h2></div>
+<div class="caption text-left">{{role}}</div>
 <h1>Doctor Profile</h1>
 <div class="profile-photo">
     <!--    <form action="{{ url_for('routes.logout') }}" method="post">-->
     <!--        <button type="submit" style="">Logout</button>-->
     <!--    </form>-->
-    <img src="{{ url_for('static', filename='images/profile_image.jpg') }}" alt="Doctor profile">
+    <img class="profile-pic" src="{{ url_for('static', filename='images/profile_image.jpg') }}"
+         alt="Doctor profile" onmouseover="showMenu()" onmouseout="hideMenu()">
+    <div id="dropdown-menu" class="dropdown-menu">
+        <a href="#" onclick="logout()">Logout</a>
+    </div>
 </div>
 
 <div class="time">
@@ -71,5 +76,6 @@
     </a>
 
 </div>
+<script src="{{ url_for('static', filename='js/logout.js') }}"></script>
 </body>
 </html>

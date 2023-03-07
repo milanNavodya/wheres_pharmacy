@@ -60,8 +60,15 @@ def signup():  # define the signup function
         category = request.form.get('category')
         # For Pharmacist Registration
         pharmacy_reg_no = request.form.get('pharmacy_reg_no')
+        secret_key = request.form.get('secret_key')
         if position and category:
             user_type = "doctor"
+            check_doc = User.query.filter_by(secret_key=secret_key).first()
+            if check_doc:
+                doctor_id = db.engine.execute("""select id from user where secret_key=%s""", secret_key)
+                doctor_id = doctor_id.fetchall()
+                db.engine.execute("""update user set full_name=%s, email=%s, password=%s""", name, email,
+                                  generate_password_hash(password))
         if pharmacy_reg_no:
             user_type = "pharmacist"
 
@@ -80,7 +87,7 @@ def signup():  # define the signup function
         return redirect(url_for('routes.login'))
 
 
-@routes.route('/logout', methods=['POST'])  # path for logout
+@routes.route('/logout')  # path for logout
 @login_required
 def logout():  # function for logout action
     logout_user()
