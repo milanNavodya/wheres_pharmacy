@@ -75,14 +75,25 @@ def index_user():
         return redirect(url_for('views.page_not_found'))
 
 
-@views.route('/user/setting')
+@views.route('/user/user_details')
 @login_required
-def settings_user_profile():
+def user_profile_details():
     user_id = session.get('id')
     user = User.query.filter_by(id=user_id).first()
     age = date.today().year - user.dob.year
     if user.user_role == 'patient':
         return render_template('patient_profile_settings.html', name=user.full_name, age=age, gender=user.gender)
+    else:
+        return redirect(url_for('views.page_not_found'))
+
+
+@views.route('/user/chat')
+@login_required
+def chat():
+    user_id = session.get('id')
+    user = User.query.filter_by(id=user_id).first()
+    if user.user_role == 'patient':
+        return render_template('chatUi.html')
     else:
         return redirect(url_for('views.page_not_found'))
 
