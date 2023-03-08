@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <!-- <title>Responsive Sidebar Menu</title> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+
+<input type="checkbox" id="check">
+<label for="check">
+    <i class="fas fa-bars" id="btn"></i>
+    <i class="fas fa-times" id="cancel"></i>
+
+    <i class="fas fa-times" id="btn">
+        <button id="btn1" class="btn btn-primary btn-square-social" style="background-color: #2865ea;" href="#!"
+                role="button">
+            <h4>Pharmacy</h4>
+        </button>
+    </i>
+    <i class="fas fa-times" id="btn">
+        <button id="btn2" class="btn btn-primary btn-square-social" style="background-color: #2865ea;" href="#!"
+                role="button">
+            <h4>Doctor</h4>
+        </button>
+    </i>
+    <i class="fas fa-times" id="btn">
+        <button id="btn3" class="btn btn-primary btn-square-social" style="background-color: #2865ea;" href="#!"
+                role="button">
+            <h4>Patient</h4>
+        </button>
+    </i>
+    <i class="fas fa-times" id="btn">
+        <button id="btn4" class="btn btn-primary btn-square-social" style="background-color: #2865ea;;" href="#!"
+                role="button">
+            <h4>Product</h4>
+        </button>
+    </i>
+
+
+</label>
+<div class="sidebar">
+    <header>Dashboard</header>
+    <div class="openBtn">
+        <button class="openButton" onclick="openForm()"><strong>Create Doctor</strong></button>
+    </div>
+
+
+    <div class="loginPopup">
+        <div class="formPopup" id="popupForm">
+            <form action="/action_page.php" class="formContainer">
+                <h2>Add Doctor</h2>
+                <label for="doctor">
+                    <strong>Enter Doctor Name</strong>
+                </label>
+                <input type="text" id="doctor" placeholder="Doctor Name" name="doctor" required>
+                <label for="secretkey">
+                    <strong>Enter Secret Key</strong>
+                </label>
+                <input type="text" id="secretkey" placeholder="Secret key" name="secretkey" required>
+                <button type="submit" class="btn">Log in</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openForm() {
+            document.getElementById("popupForm").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("popupForm").style.display = "none";
+        }
+    </script>
+
+
+</body>
+</html>

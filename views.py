@@ -38,6 +38,17 @@ def signup_user():
     return render_template('signup_user.html')
 
 
+@views.route('/admin')
+@login_required
+def index_admin():
+    user_id = session.get('id')
+    user = User.query.filter_by(id=user_id).first()
+    if user.user_role == 'admin':
+        return render_template('admin.html')
+    else:
+        return redirect(url_for('views.page_not_found'))
+
+
 # Routes for doctors
 @views.route('/doctor')
 @login_required
