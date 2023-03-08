@@ -12,16 +12,16 @@
 
 <div class="container-fluid">
 
-    <h1>Patient Profile</h1>
+    <h1>{{name}}</h1>
 
 
-    <!-- <form class="search-bar">
+     <form class="search-bar">
       <div class="search-bar-group">
         <table>
         <tr><td><input class="form-control" type="search" placeholder="Search" aria-label="Search"></td><td><button class="btn-search" type="submit">Search<i class="fas fa-search"></i></button></td></tr>
     </table>
       </div>
-    </form> -->
+    </form>
 
 </div>
 
@@ -32,14 +32,14 @@
         <tr>
             <td>
                 <div class="row big-button">
-                    <a href="{{ url_for('views.settings_user_profile') }}">
+                    <a href="{{ url_for('views.chat') }}">
                         <!--text-->
                         <div class="col text-container centerbox">
-                            <p>Settings</p>
+                            <p>Chat</p>
                         </div>
                         <!--image-->
                         <div class="col-md-7 image-container">
-                            <img src="https://cdn1.vectorstock.com/i/thumb-large/25/00/gear-icon-flat-engineering-symbol-isolated-on-whi-vector-21462500.jpg"
+                            <img src="{{ url_for('static', filename='images/chat.jpg') }}"
                                  alt="sales" class="images img-fluid"/>
                         </div>
                     </a>
@@ -49,7 +49,7 @@
             <td class="gap"></td>
             <td>
                 <div class="row big-button">
-                    <a href="{{ url_for('views.buy_medicine') }}">
+                    <a href="{{ url_for('views.get_location') }}">
                         <!--text-->
                         <div class="col text-container centerbox">
                             <p>Map</p>
@@ -71,7 +71,7 @@
         <tr>
             <td>
                 <div class="row big-button">
-                    <a href="PatientProfile2.html">
+                    <a href="{{ url_for('views.user_profile_details') }}">
                         <!--text-->
                         <div class="col text-container centerbox">
                             <p>My Medical <br>Reports</p>
@@ -107,7 +107,7 @@
 
 </table>
 <div>
-    <a href="AppointmentBooking.html">
+    <a href="{{ url_for('views.place_appointment') }}">
         <button class="button-place-an-appointment" role="button">Place an Appointment</button>
     </a>
 </div>

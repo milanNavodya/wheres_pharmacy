@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, jsonify, session, redirect, url_for
 from flask_login import login_required
 from config import db
-from datetime import datetime
+from datetime import datetime, date
 import routes
 from models import User
 
@@ -43,13 +43,23 @@ def signup_user():
 @login_required
 # Doctor profile
 def index_doctor():
-    return render_template('doctor_profile.html')
+    user_id = session.get('id')
+    user = User.query.filter_by(id=user_id).first()
+    if user.user_role == 'doctor':
+        return render_template('doctor_profile.html', name=user.full_name, role=user.user_role)
+    else:
+        return redirect(url_for('views.page_not_found'))
 
 
 @views.route('/doctor/appointments')
 @login_required
 def doctor_appointments():
-    return render_template('doctor_profile_appointments.html')
+    user_id = session.get('id')
+    user = User.query.filter_by(id=user_id).first()
+    if user.user_role == 'doctor':
+        return render_template('doctor_profile_appointments.html')
+    else:
+        return redirect(url_for('views.page_not_found'))
 
 
 # Routes for Patients
@@ -57,16 +67,33 @@ def doctor_appointments():
 @login_required
 # Doctor profile
 def index_user():
-    return render_template('patient_menu.html')
-
-
-@views.route('/user/setting')
-@login_required
-def settings_user_profile():
     user_id = session.get('id')
     user = User.query.filter_by(id=user_id).first()
     if user.user_role == 'patient':
-        return render_template('patient_profile_settings.html')
+        return render_template('patient_menu.html', name=user.full_name)
+    else:
+        return redirect(url_for('views.page_not_found'))
+
+
+@views.route('/user/user_details')
+@login_required
+def user_profile_details():
+    user_id = session.get('id')
+    user = User.query.filter_by(id=user_id).first()
+    age = date.today().year - user.dob.year
+    if user.user_role == 'patient':
+        return render_template('patient_profile_settings.html', name=user.full_name, age=age, gender=user.gender)
+    else:
+        return redirect(url_for('views.page_not_found'))
+
+
+@views.route('/user/chat')
+@login_required
+def chat():
+    user_id = session.get('id')
+    user = User.query.filter_by(id=user_id).first()
+    if user.user_role == 'patient':
+        return render_template('chatUi.html')
     else:
         return redirect(url_for('views.page_not_found'))
 
@@ -88,18 +115,36 @@ def buy_medicine():
     user_id = session.get('id')
     user = User.query.filter_by(id=user_id).first()
     if user.user_role == 'patient':
-        return render_template('patient_buy_medicine.html')
+        return render_template('patient_buy_medicine.html', name=user.full_name)
     else:
         return redirect(url_for('views.page_not_found'))
 
 
-@views.route('/user/appointment', methods=['POST'])
+@views.route('/user/appointment')
 @login_required
 def place_appointment():
     user_id = session.get('id')
     user = User.query.filter_by(id=user_id).first()
     if user.user_role == 'patient':
-        return render_template('appointment_booking.html')
+        return render_template('appointment_booking.html', name=user.full_name, phone=user.mobile)
+    else:
+        return redirect(url_for('views.page_not_found'))
+
+
+@views.route('/user/location')
+@login_required
+def get_location():
+    user_id = session.get('id')
+    user = User.query.filter_by(id=user_id).first()
+    if user.user_role == 'patient':
+        """Get longitude and latitude of user"""
+        import location as loc
+        loc.inputs()
+        loc.makeMap()
+        loc.add_CSV_values_to_map()
+        loc.add_user()
+        loc.draw_circle_around_user()
+        return render_template('map.html')
     else:
         return redirect(url_for('views.page_not_found'))
 
@@ -111,7 +156,7 @@ def index_pharmacist():
     user_id = session.get('id')
     user = User.query.filter_by(id=user_id).first()
     if user.user_role == 'pharmacist':
-        return render_template('pharmacy_profile.html')
+        return render_template('pharmacy_profile.html', name=user.full_name)
     else:
         return redirect(url_for('views.page_not_found'))
 
@@ -131,6 +176,31 @@ def sale_order_details():
 @login_required
 def pharmacy_inventory():
     return render_template('pharmacy_inventory.html')
+
+
+@views.route('/pharmacist/inventory/create', methods=['POST', 'GET'])
+@login_required
+def inventory_create():
+    # todo : add inventory create form
+    if request.method == 'GET':
+        return "create form"
+    else:
+        """update database"""
+        return 'create form'
+
+
+@views.route('/pharmacist/inventory/update', methods=['POST'])
+@login_required
+def inventory_update():
+    # todo : add inventory update form
+    return 'update form'
+
+
+@views.route('/pharmacist/inventory/delete', methods=['POST'])
+@login_required
+def inventory_delete():
+    # todo : add inventory delete form
+    return 'deleted'
 
 
 @views.route('/page-not-found')

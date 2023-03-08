@@ -18,6 +18,8 @@ doctor_name {
     height: 100px;
     margin-left: 1200px;
     margin-top: -50px;
+    position: relative;
+    display: inline-block;
 }
 
 .profile-photo img {
@@ -134,8 +136,6 @@ doctor_name {
 .card-title {
     width: 250px;
     margin-left: 70%;
-
-
 }
 
 .card-img-top {
