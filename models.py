@@ -52,7 +52,7 @@ class ProductStock(UserMixin, db.Model):
     __tablename__ = 'product_stock'
     id = db.Column(db.Integer, primary_key=True)
     quantity = db.Column(db.Integer)
-    price = db.Column(db.Double)
+    price = db.Column(db.Float)
     product_id = db.Column(db.Integer)
     pharmacy_id = db.Column(db.Integer)
 
@@ -61,3 +61,10 @@ class ProductStock(UserMixin, db.Model):
         self.price = price
         self.product_id = product_id
         self.pharmacy_id = pharmacy_id
+
+
+class Schedule(UserMixin, db.Model):
+    __tablename__ = 'schedule'
+    id = db.Column(db.Integer, primary_key=True)
+    doctor_id = db.Column(db.Integer)
+    schedule_date = db.Column(db.DateTime)

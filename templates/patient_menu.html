@@ -49,7 +49,7 @@
             <td class="gap"></td>
             <td>
                 <div class="row big-button">
-                    <a href="{{ url_for('views.buy_medicine') }}">
+                    <a href="{{ url_for('views.get_location') }}">
                         <!--text-->
                         <div class="col text-container centerbox">
                             <p>Map</p>
@@ -107,7 +107,7 @@
 
 </table>
 <div>
-    <a href="AppointmentBooking.html">
+    <a href="{{ url_for('views.place_appointment') }}">
         <button class="button-place-an-appointment" role="button">Place an Appointment</button>
     </a>
 </div>

@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, jsonify, session, redirect, url_for
 from flask_login import login_required
 from config import db
-from datetime import datetime
+from datetime import datetime, date
 import routes
 from models import User
 
@@ -80,8 +80,9 @@ def index_user():
 def settings_user_profile():
     user_id = session.get('id')
     user = User.query.filter_by(id=user_id).first()
+    age = date.today().year - user.dob.year
     if user.user_role == 'patient':
-        return render_template('patient_profile_settings.html')
+        return render_template('patient_profile_settings.html', name=user.full_name, age=age, gender=user.gender)
     else:
         return redirect(url_for('views.page_not_found'))
 
@@ -103,18 +104,36 @@ def buy_medicine():
     user_id = session.get('id')
     user = User.query.filter_by(id=user_id).first()
     if user.user_role == 'patient':
-        return render_template('patient_buy_medicine.html')
+        return render_template('patient_buy_medicine.html', name=user.full_name)
     else:
         return redirect(url_for('views.page_not_found'))
 
 
-@views.route('/user/appointment', methods=['POST'])
+@views.route('/user/appointment')
 @login_required
 def place_appointment():
     user_id = session.get('id')
     user = User.query.filter_by(id=user_id).first()
     if user.user_role == 'patient':
-        return render_template('appointment_booking.html')
+        return render_template('appointment_booking.html', name=user.full_name, phone=user.mobile)
+    else:
+        return redirect(url_for('views.page_not_found'))
+
+
+@views.route('/user/location')
+@login_required
+def get_location():
+    user_id = session.get('id')
+    user = User.query.filter_by(id=user_id).first()
+    if user.user_role == 'patient':
+        """Get longitude and latitude of user"""
+        import location as loc
+        loc.inputs()
+        loc.makeMap()
+        loc.add_CSV_values_to_map()
+        loc.add_user()
+        loc.draw_circle_around_user()
+        return render_template('map.html')
     else:
         return redirect(url_for('views.page_not_found'))
 
