@@ -51,17 +51,17 @@
 
     <div class="loginPopup">
         <div class="formPopup" id="popupForm">
-            <form action="/action_page.php" class="formContainer">
+            <form action="{{ url_for('views.admin_add_doctor') }}" class="formContainer" method="POST">
                 <h2>Add Doctor</h2>
                 <label for="doctor">
                     <strong>Enter Doctor Name</strong>
                 </label>
-                <input type="text" id="doctor" placeholder="Doctor Name" name="doctor" required>
+                <input type="text" id="doctor" placeholder="Doctor Name" name="name" required>
                 <label for="secretkey">
                     <strong>Enter Secret Key</strong>
                 </label>
                 <input type="text" id="secretkey" placeholder="Secret key" name="secretkey" required>
-                <button type="submit" class="btn">Log in</button>
+                <button type="submit" class="btn">Add Doctor</button>
                 <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
             </form>
         </div>

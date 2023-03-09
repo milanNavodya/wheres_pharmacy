@@ -1,43 +1,38 @@
 
-body{
-    background-color: #80d9f4;: rgb(79,169,195);
-background-color: linear-gradient(153deg, rgba(79,169,195,1) 0%, rgba(150,222,211,1) 100%);
- }
-   
-
-h1{
-    text-align: center; margin-top: 30px;
+body {
+    background-color: #80d9f4;: rgb(79, 169, 195);
+    background-color: linear-gradient(153deg, rgba(79, 169, 195, 1) 0%, rgba(150, 222, 211, 1) 100%);
 }
 
-.serch-bar
-{
+
+h1 {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.serch-bar {
     position: absolute;
-top: 30px;
-right: 40px;
+    top: 30px;
+    right: 40px;
 
 }
 
 .form-control {
-  width: 300px;
-  height: 40px;
-  font-size: 16px;
-  padding: 10px;
+    width: 300px;
+    height: 40px;
+    font-size: 16px;
+    padding: 10px;
 }
 
 .btn-serch serch-bar {
-  height: 40px;
-  font-size: 16px;
-  padding: 10px 20px;
+    height: 40px;
+    font-size: 16px;
+    padding: 10px 20px;
 }
 
 
-
-
-
-
-
-.gap{
-    width:20px;
+.gap {
+    width: 20px;
 }
 
 /* 4bigbuttons */
@@ -51,7 +46,6 @@ right: 40px;
     padding: 10px;
     display: flex;
 }
-
 
 
 .big-button:hover {
@@ -73,12 +67,12 @@ right: 40px;
 
 
 a {
-    text-decoration:none;
+    text-decoration: none;
     margin-bottom: 150px;
 }
 
 .text-container {
-    position:absolute;
+    position: absolute;
     font-size: 30px;
     text-align: center;
     color: darkblue;
@@ -86,21 +80,17 @@ a {
 }
 
 
-  .image-container {
+.image-container {
     text-align: right;
     margin-left: auto;
-  }
-  
-
-.images{
-    width: 260px;
-  height: 200px;
-  background-color: red;
 }
 
 
-
-
+.images {
+    width: 260px;
+    height: 200px;
+    background-color: red;
+}
 
 
 /* smallbutton */
@@ -113,7 +103,7 @@ a {
     cursor: pointer;
     display: inline-flex;
     fill: #000;
-    font-family: Inter,sans-serif;
+    font-family: Inter, sans-serif;
     font-size: 16px;
     font-weight: 600;
     height: 48px;
@@ -129,29 +119,28 @@ a {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-  }
-  
-  .button-place-an-appointment:focus {
+}
+
+.button-place-an-appointment:focus {
     color: #171e29;
-  }
-  
-  .button-place-an-appointment:hover {
+}
+
+.button-place-an-appointment:hover {
     background-color: #3385ff;
     border-color: #3385ff;
     fill: #06f;
-  }
-  
-  .button-place-an-appointment:active {
+}
+
+.button-place-an-appointment:active {
     background-color: #3385ff;
     border-color: #3385ff;
     fill: #06f;
-  }
-  
-  .button-place-an-appointment
-  {
-      position: absolute;
-  bottom: 20px;
-  right: 10px;
-  
-  }
+}
+
+.button-place-an-appointment {
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+
+}
 

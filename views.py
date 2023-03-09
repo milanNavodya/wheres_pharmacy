@@ -49,6 +49,33 @@ def index_admin():
         return redirect(url_for('views.page_not_found'))
 
 
+@views.route('/admin/add-doctor', methods=['GET', 'POST'])
+@login_required
+def admin_add_doctor():
+    user_id = session.get('id')
+    user = User.query.filter_by(id=user_id).first()
+    if user.user_role == 'admin':
+        if request.method == 'GET':
+            return render_template('admin.html')
+        else:
+            secret_key = request.form.get('secretkey')
+            name = request.form.get('name')
+            role = 'doctor'
+            doctor = User.query.filter_by(secret_key=secret_key).first()
+            if doctor:
+                flash("Secret key already in used!")
+                return redirect(url_for('views.index_admin'))
+            else:
+                new_doctor = User(full_name=name, email=None, password=None, gender=None, dob=None, address=None,
+                                  mobile=None, position=None, category=None,
+                                  pharmacy_reg_no=None, user_role=role, secret_key=secret_key)
+                db.session.add(new_doctor)
+                db.session.commit()
+                return redirect(url_for('views.index_admin'))
+    else:
+        return redirect(url_for('views.page_not_found'))
+
+
 # Routes for doctors
 @views.route('/doctor')
 @login_required
@@ -68,7 +95,7 @@ def doctor_appointments():
     user_id = session.get('id')
     user = User.query.filter_by(id=user_id).first()
     if user.user_role == 'doctor':
-        return render_template('doctor_profile_appointments.html')
+        return render_template('doctor_profile_appointments.html', name=user.full_name, category=user.category)
     else:
         return redirect(url_for('views.page_not_found'))
 

@@ -12,17 +12,68 @@
 
     <!-- Main css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/sign_in_up_base.css') }}">
+
+    <script>
+        function validation() {
+            var password = document.getElementById("password").value;
+            var pwderror = document.getElementById("pwderror");
+            var email = document.getElementById('email').value;
+            var emailerror = document.getElementById('emailError');
+            var isValid = true;
+            if (!validateEmail(email)) {
+                emailerror.innerHTML = "Please enter a valid email address.";
+                isValid = false;
+            } else {
+                emailerror.innerHTML = "";
+            }
+            if (!validatePassword(password)) {
+                pwderror.innerHTML = "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.";
+                isValid = false;
+            } else {
+                pwderror.innerHTML = "";
+            }
+            return isValid;
+        }
+
+        function validateEmail(email) {
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.match(emailRegex)) {
+                return false;
+            }
+            if (email.length > 254) {
+                return false;
+            }
+            var parts = email.split("@");
+            var domain = parts[1];
+            if (domain.indexOf(".") === -1) {
+                return false;
+            }
+            return true;
+        }
+
+        function validatePassword(password) {
+            var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+
+            if (!password.match(passwordRegex)) {
+                return false;
+            }
+            return true;
+        }
+    </script>
+
 </head>
 <body>
 
 <div class="main">
+
     <!-- Sign up form -->
     <section class="signup">
         <div class="container">
             <div class="signup-content">
                 <div class="signup-form">
                     <h2 class="form-title">Sign up</h2>
-                    <form method="POST" class="register-form" id="register-form" action="/signup">
+                    <form method="POST" class="register-form" id="register-form" action="/signup"
+                          onsubmit="return validation()">
                         <!-- Full Name -->
                         <div class="form-group">
                             <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
@@ -32,11 +83,13 @@
                         <div class="form-group">
                             <label for="email"><i class="zmdi zmdi-email"></i></label>
                             <input type="email" name="email" id="email" placeholder="Your Email" required/>
+                            <div id="emailError"></div>
                         </div>
                         <!-- Password -->
                         <div class="form-group">
                             <label for="pass"><i class="zmdi zmdi-lock"></i></label>
                             <input type="password" name="password" id="pass" placeholder="Password" required/>
+                            <div id="pwdError"></div>
                         </div>
 
                         {% block user_birthday %}{% endblock %}

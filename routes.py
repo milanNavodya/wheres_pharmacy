@@ -34,6 +34,8 @@ def login():  # define login page function
             return redirect(url_for('views.index_doctor'))
         elif user.user_role == 'pharmacist':
             return redirect(url_for('views.index_pharmacist'))
+        elif user.user_role == 'admin':
+            return redirect(url_for('views.index_admin'))
         else:
             return redirect(url_for('views.user_type'))
 
@@ -63,12 +65,12 @@ def signup():  # define the signup function
         secret_key = request.form.get('secret_key')
         if position and category:
             user_type = "doctor"
-            check_doc = User.query.filter_by(secret_key=secret_key).first()
+            check_doc = User.query.filter_by(secret_key=secret_key).order_by(User.id.desc()).first()
             if check_doc:
-                doctor_id = db.engine.execute("""select id from user where secret_key=%s""", secret_key)
-                doctor_id = doctor_id.fetchall()
-                db.engine.execute("""update user set full_name=%s, email=%s, password=%s""", name, email,
-                                  generate_password_hash(password))
+                db.engine.execute("""UPDATE user SET full_name=%s, email=%s, password=%s WHERE id=%s""", name, email,
+                                  generate_password_hash(password), check_doc.id)
+            flash('Wrong Secret Key!')
+            return redirect(url_for('views.signup_doctor'))
         if pharmacy_reg_no:
             user_type = "pharmacist"
 
@@ -80,7 +82,7 @@ def signup():  # define the signup function
         # create a new user with the form data. Hash the password so the plaintext version isn't saved.
         new_user = User(full_name=name, email=email, password=generate_password_hash(password), gender=gender, dob=dob,
                         address=address, mobile=mobile, position=position, category=category,
-                        pharmacy_reg_no=pharmacy_reg_no, user_role=user_type)
+                        pharmacy_reg_no=pharmacy_reg_no, user_role=user_type, secret_key=secret_key)
         # add the new user to the database
         db.session.add(new_user)
         db.session.commit()
