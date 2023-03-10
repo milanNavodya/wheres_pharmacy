@@ -19,7 +19,6 @@ def login():  # define login page function
         # take the user-supplied password, hash it, and compare it to the hashed password in the database
 
         if not user:
-            flash('Please sign up before!')
             return redirect(url_for('views.user_type'))
         elif not check_password_hash(user.password, password):
             flash('Please check your login details and try again.')
@@ -54,7 +53,15 @@ def signup():  # define the signup function
         city = request.form.get('city')
         state = request.form.get('state')
         county = request.form.get('county')
-        address = street + ", " + city + ", " + state + ", " + county + "."
+        address = ''
+        if street:
+            address += street
+        if city:
+            address += ', ' + city
+        if state:
+            address += ', ' + state
+        if county:
+            address += ', ' + county + '.'
         mobile = request.form.get('mobile')
         user_type = "patient"
         # For Doctor registration
@@ -63,21 +70,29 @@ def signup():  # define the signup function
         # For Pharmacist Registration
         pharmacy_reg_no = request.form.get('pharmacy_reg_no')
         secret_key = request.form.get('secret_key')
+        user = User.query.filter_by(email=email).first()  # return user if email already exist
+        if user:  # if that user already registered return again to sign up page
+            return redirect(url_for('views.user_type'))
+
         if position and category:
             user_type = "doctor"
             check_doc = User.query.filter_by(secret_key=secret_key).order_by(User.id.desc()).first()
             if check_doc:
-                db.engine.execute("""UPDATE user SET full_name=%s, email=%s, password=%s WHERE id=%s""", name, email,
-                                  generate_password_hash(password), check_doc.id)
-            flash('Wrong Secret Key!')
-            return redirect(url_for('views.signup_doctor'))
+                # db.engine.execute("""UPDATE user SET full_name=%s, email=%s, password=%s WHERE id=%s""", name, email,
+                #                   generate_password_hash(password), check_doc.id)
+                check_doc.full_name = name
+                check_doc.email = email
+                check_doc.password = generate_password_hash(password)
+                check_doc.mobile = mobile
+                check_doc.position = position
+                check_doc.category = category
+                check_doc.address = address
+                db.session.commit()
+            else:
+                flash('Wrong Secret Key!')
+                return redirect(url_for('views.signup_doctor'))
         if pharmacy_reg_no:
             user_type = "pharmacist"
-
-        user = User.query.filter_by(email=email).first()  # return user if email already exist
-        if user:  # if that user already registered return again to sign up page
-            flash('Email address already exists.')
-            return redirect(url_for('views.user_type'))
 
         # create a new user with the form data. Hash the password so the plaintext version isn't saved.
         new_user = User(full_name=name, email=email, password=generate_password_hash(password), gender=gender, dob=dob,

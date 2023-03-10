@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*{
+  font-family: 'Poppins',sans-serif;
+}
+
 h1 {
     margin-left: 44%;
     margin-top: -70px;
@@ -13,18 +20,64 @@ doctor_name {
     margin-left: 5px;
 }
 
-.profile-photo {
-    width: 100px;
-    height: 100px;
-    margin-left: 1200px;
-    margin-top: -50px;
-    position: relative;
-    display: inline-block;
+/*.profile-photo {*/
+/*    width: 100px;*/
+/*    height: 100px;*/
+/*    margin-left: 1200px;*/
+/*    margin-top: -50px;*/
+/*    position: relative;*/
+/*    display: inline-block;*/
+/*}*/
+
+/*.profile-photo img {*/
+/*    max-width: 100px;*/
+/*    max-height: 100px;*/
+/*}*/
+.profile-photo{
+    position: relative;display: grid;
+    place-items: center;
+    height: 70px;
 }
 
-.profile-photo img {
-    max-width: 100px;
-    max-height: 100px;
+.profile-pic{
+    position: relative;
+    display: grid;place-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    margin-left: 1200px;
+    margin-top: -120px;
+}
+.profile-pic::before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    scale: 0.25;
+    opacity: 0;
+    background: #f5f5f5;
+    transition: 0.2s;
+}
+.profile-photo:hover > .profile-pic::before{
+    scale: 1;
+    opacity: 1;
+}
+.dropdown-menu::-webkit-scrollbar{
+    width: 15px;
+}
+.dropdown-menu::-webkit-scrollbar-thumb{
+    background: #dadce0;
+    border-radius: 10px;
+    border: 4px solid transparent;
+    background-clip: padding-box;
+}
+.profile-photo:hover > .dropdown-menu{
+    opacity: 1;
+    visibility: visible;
 }
 
 .time {

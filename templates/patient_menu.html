@@ -9,20 +9,12 @@
 
 </head>
 <body>
-
 <div class="container-fluid">
-
     <h1>{{name}}</h1>
-
-
-
 <hr/>
-<table>
-    <div class="container">
-
+<table style="width: 90%">
         <tr>
-            <td>
-                <div class="row big-button">
+            <td style="padding: 20px 30px; vertical-align: center">
                     <a href="{{ url_for('views.chat') }}">
                         <!--text-->
                         <div class="col text-container centerbox">
@@ -34,12 +26,9 @@
                                  alt="sales" class="images img-fluid"/>
                         </div>
                     </a>
-
-                </div>
             </td>
             <td class="gap"></td>
-            <td>
-                <div class="row big-button">
+            <td style="padding: 20px 30px; vertical-align: center">
                     <a href="{{ url_for('views.get_location') }}">
                         <!--text-->
                         <div class="col text-container centerbox">
@@ -50,18 +39,10 @@
                                 src="https://th.bing.com/th/id/R.23029fc4443d56eb35c9113d0d003bf9?rik=6CxDWZmUmMGM2w&riu=http%3a%2f%2fsuperawesomevectors.com%2fwp-content%2fuploads%2f2015%2f01%2fflat-map-icon.jpg&ehk=FEQtsLlmGmV99vDIWBgNKIWDiYmpwTGWMud4Att0KzA%3d&risl=&pid=ImgRaw&r=0"
                                 alt="inventory" class="images img-fluid"/></div>
                     </a>
-                </div>
             </td>
         </tr>
-
-    </div>
-
-
-    <div class="container">
-
         <tr>
-            <td>
-                <div class="row big-button">
+            <td style="padding: 20px 30px; vertical-align: center">
                     <a href="{{ url_for('views.user_profile_details') }}">
                         <!--text-->
                         <div class="col text-container centerbox">
@@ -72,14 +53,9 @@
                                 src="{{ url_for('static', filename='images/my_medical_report.jpeg') }}" alt="sales"
                                 class="images img-fluid"/></div>
                     </a>
-
-                </div>
             </td>
             <td class="gap"></td>
-
-
-            <td>
-                <div class="row big-button">
+            <td style="padding: 20px 30px; vertical-align: center">
                     <a href="{{ url_for('views.buy_medicine') }}">
                         <!--text-->
                         <div class="col text-container centerbox">
@@ -90,12 +66,8 @@
                                 src="{{ url_for('static', filename='images/buy_now.jpg') }}" alt="inventory"
                                 class="images img-fluid"/></div>
                     </a>
-                </div>
             </td>
         </tr>
-
-    </div>
-
 </table>
 <div>
     <a href="{{ url_for('views.place_appointment') }}">

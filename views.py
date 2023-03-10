@@ -84,7 +84,7 @@ def index_doctor():
     user_id = session.get('id')
     user = User.query.filter_by(id=user_id).first()
     if user.user_role == 'doctor':
-        return render_template('doctor_profile.html', name=user.full_name, role=user.user_role)
+        return render_template('doctor_profile.html', name=user.full_name, category=user.category)
     else:
         return redirect(url_for('views.page_not_found'))
 
@@ -147,13 +147,17 @@ def doctor_for_user():
         return redirect(url_for('views.page_not_found'))
 
 
-@views.route('/user/buy-med')
+@views.route('/user/buy-med', methods=['GET', 'POST'])
 @login_required
 def buy_medicine():
     user_id = session.get('id')
     user = User.query.filter_by(id=user_id).first()
     if user.user_role == 'patient':
-        return render_template('patient_buy_medicine.html', name=user.full_name)
+        if request.method == 'GET':
+            return render_template('patient_buy_medicine.html', name=user.full_name)
+        else:
+            # TODO: place an order, store in table
+            pass
     else:
         return redirect(url_for('views.page_not_found'))
 
@@ -205,7 +209,7 @@ def sale_order_details():
     user_id = session.get('id')
     user = User.query.filter_by(id=user_id).first()
     if user.user_role == 'pharmacist':
-        return render_template('pharmacy_sales.html')
+        return render_template('pharmacy_sales.html', name=user.full_name)
     else:
         return redirect(url_for('views.page_not_found'))
 
@@ -213,7 +217,12 @@ def sale_order_details():
 @views.route('/pharmacist/inventory')
 @login_required
 def pharmacy_inventory():
-    return render_template('pharmacy_inventory.html')
+    user_id = session.get('id')
+    user = User.query.filter_by(id=user_id).first()
+    if user.user_role == 'pharmacist':
+        return render_template('pharmacy_inventory.html', name=user.full_name)
+    else:
+        return redirect(url_for('views.page_not_found'))
 
 
 @views.route('/pharmacist/inventory/create', methods=['POST', 'GET'])

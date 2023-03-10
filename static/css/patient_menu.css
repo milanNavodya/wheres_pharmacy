@@ -138,9 +138,8 @@ a {
 }
 
 .button-place-an-appointment {
-    position: absolute;
-    bottom: 20px;
-    right: 10px;
+    align-content: center;
+    margin-left: 600px;
 
 }
 

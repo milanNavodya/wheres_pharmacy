@@ -11,7 +11,7 @@
 </head>
 <body style="background-color: #bee0ec;">
 <div class="logocaption"><h2>{{name}}</h2></div>
-<div class="caption text-left">{{role}}</div>
+<div class="caption text-left">{{category}}</div>
 <h1>Doctor Profile</h1>
 <div class="profile-photo">
     <!--    <form action="{{ url_for('routes.logout') }}" method="post">-->
@@ -19,14 +19,14 @@
     <!--    </form>-->
     <img class="profile-pic" src="{{ url_for('static', filename='images/profile_image.jpg') }}"
          alt="Doctor profile" onmouseover="showMenu()" onmouseout="hideMenu()">
-    <div id="dropdown-menu" class="dropdown-menu">
-        <a href="#" onclick="logout()">Logout</a>
+    <div id="dropdown-menu" class="dropdown-menu" style="margin-top: -25px; margin-right: 40px; width: 70px;">
+        <a href="{{url_for('routes.logout')}}" onclick="logout()">Logout</a>
     </div>
 </div>
 
-<div class="time">
-    <h4>Patient time: 8AM -10PM</h4>
-</div>
+<!--<div class="time">-->
+<!--    <h4>Patient time: 8AM -10PM</h4>-->
+<!--</div>-->
 
 <div class="wrapper">
     <div class="wrapper">
@@ -45,16 +45,16 @@
 
 <div id="icon-row-box" class="container centerbox">
     <div class="icon-row">
-        <a href="https://www.example.com">
+        <a href="#">
             <img class="icons" src="{{ url_for('static', filename='images/tele.png') }}" alt="contact">
         </a>
-        <a href="https://www.example.com">
+        <a href="#">
             <img class="icons" src="{{ url_for('static', filename='images/msg.png') }}" alt="message">
         </a>
 
     </div>
 </div>
-<div class="outer">
+<div class="outer"style="border-color: #BEE0EC">
     <div class="card">
         <img src="{{ url_for('static', filename='images/patient.jpg') }}" class="card-img-top"
              alt="Successful patients"/>
