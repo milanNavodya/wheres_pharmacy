@@ -5,9 +5,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/pharmacy_profile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common_actions.css') }}">
 </head>
 <body>
-<h1 id="title">{{name}}</h1>
+<div class="title-top">
+    <div>
+        <a href="{{ url_for('views.index_pharmacist') }}">
+            <img src="{{ url_for('static', filename='images/left-arrow.png') }}">
+        </a>
+    </div>
+    <div class="title-head"><h1 id="title">{{name}}</h1></div>
+</div>
 <hr>
 
 <div id="icon-row-box" class="container centerbox">
