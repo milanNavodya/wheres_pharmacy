@@ -223,13 +223,38 @@ def pharmacy_inventory():
         if request.method == 'GET':
             """This part only set records for table content of inventory"""
             # view records of inventory(product stock)
-            # TODO pass table data also
             pass
         else:
             """This will be called when user try to update or delete records"""
-            # update inventory records
-            pass
-        return render_template('pharmacy_inventory.html', name=user.full_name)
+            if request.form.get('update') == 'update':
+                id = request.form.get('id')
+                price = request.form.get('price')
+                quantity = request.form.get('quantity')
+                expire_date = request.form.get('expire_date')
+                # update inventory record
+                product_stock = ProductStock.query.filter_by(id=id).first()
+                product_stock.price = float(price)
+                product_stock.quantity = int(quantity)
+                product_stock.expire_date = datetime.strptime(expire_date, '%Y-%m-%d').date()
+            elif request.form.get('update') == 'delete':
+                id = request.form.get('id')
+                product_stock = ProductStock.query.filter_by(id=id).first()
+                db.session.delete(product_stock)
+            db.session.commit()
+
+        inventory_records = ProductStock.query.filter_by(pharmacy_id=user.id).order_by(ProductStock.id.asc())
+        record_list = []
+        for inventory_record in inventory_records:
+            records = {}
+            product = Product.query.filter_by(id=inventory_record.product_id).first()
+            records['id'] = inventory_record.id
+            records['product'] = product.name
+            records['price'] = inventory_record.price
+            records['quantity'] = inventory_record.quantity
+            records['brand'] = inventory_record.brand
+            records['expire_date'] = inventory_record.expire_date
+            record_list.append(records)
+        return render_template('pharmacy_inventory.html', name=user.full_name, record_list=record_list)
     else:
         return redirect(url_for('views.page_not_found'))
 
