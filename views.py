@@ -3,7 +3,7 @@ from flask_login import login_required
 from config import db
 from datetime import datetime, date
 import routes
-from models import User
+from models import User, ProductStock, Product
 
 views = Blueprint('views', __name__)
 
@@ -214,40 +214,48 @@ def sale_order_details():
         return redirect(url_for('views.page_not_found'))
 
 
-@views.route('/pharmacist/inventory')
+@views.route('/pharmacist/inventory', methods=['GET', 'POST'])
 @login_required
 def pharmacy_inventory():
     user_id = session.get('id')
     user = User.query.filter_by(id=user_id).first()
     if user.user_role == 'pharmacist':
+        if request.method == 'GET':
+            """This part only set records for table content of inventory"""
+            # view records of inventory(product stock)
+            # TODO pass table data also
+            pass
+        else:
+            """This will be called when user try to update or delete records"""
+            # update inventory records
+            pass
         return render_template('pharmacy_inventory.html', name=user.full_name)
     else:
         return redirect(url_for('views.page_not_found'))
 
 
-@views.route('/pharmacist/inventory/create', methods=['POST', 'GET'])
-@login_required
-def inventory_create():
-    # todo : add inventory create form
-    if request.method == 'GET':
-        return "create form"
-    else:
-        """update database"""
-        return 'create form'
-
-
-@views.route('/pharmacist/inventory/update', methods=['POST'])
+@views.route('/pharmacist/inventory/update', methods=['POST', 'GET'])
 @login_required
 def inventory_update():
-    # todo : add inventory update form
-    return 'update form'
-
-
-@views.route('/pharmacist/inventory/delete', methods=['POST'])
-@login_required
-def inventory_delete():
-    # todo : add inventory delete form
-    return 'deleted'
+    user_id = session.get('id')
+    user = User.query.filter_by(id=user_id).first()
+    if user.user_role == 'pharmacist':
+        products = Product.query.all()
+        if request.method == 'POST':
+            """update database"""
+            product = request.form.get('product')
+            price = request.form.get('price')
+            quantity = request.form.get('quantity')
+            brand = request.form.get('brand')
+            expire_date_str = request.form.get('expire_date')
+            expire_date = datetime.strptime(expire_date_str, '%Y-%m-%d').date()
+            stock_rec = ProductStock(quantity=int(quantity), price=float(price), product_id=int(product),
+                                     pharmacy_id=user.id, brand=brand, expire_date=expire_date)
+            db.session.add(stock_rec)
+            db.session.commit()
+        return render_template('inventory_update.html', products=products)
+    else:
+        return redirect(url_for('views.page_not_found'))
 
 
 @views.route('/page-not-found')

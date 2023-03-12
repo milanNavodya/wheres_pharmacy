@@ -53,14 +53,18 @@ class ProductStock(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     quantity = db.Column(db.Integer)
     price = db.Column(db.Float)
-    product_id = db.Column(db.Integer)
-    pharmacy_id = db.Column(db.Integer)
+    brand = db.Column(db.String)
+    expire_date = db.Column(db.Date)
+    product_id = db.Column(db.Integer, db.ForeignKey('product.id'))
+    pharmacy_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-    def __init__(self, quantity, price, product_id, pharmacy_id):
+    def __init__(self, quantity, price, product_id, pharmacy_id, brand, expire_date):
         self.quantity = quantity
         self.price = price
         self.product_id = product_id
         self.pharmacy_id = pharmacy_id
+        self.brand = brand
+        self.expire_date = expire_date
 
 
 class Schedule(UserMixin, db.Model):
