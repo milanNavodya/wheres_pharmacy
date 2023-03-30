@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*{
+  font-family: 'Poppins',sans-serif;
+}
+
+body{
+    background: #8FD5E6;
+}
+
+h1{
+    margin-left: 44%;
+    margin-top: -70px;
+    
+}
+
+doctor_name{
+  margin-top: 20px;
+  margin-left: 5px;
+}
+
+.search-bar {
+    float: right;
+    position: absolute;
+    top: 5px;
+    right: 15px;
+}
+
+.form-control {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 200px;
+    margin-right: 10px;
+  }
+  
+  .btn-search {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+
+  .search-bar-group {
+    display: flex;
+    align-items: center;
+  }
+
+  .Appointments {
+    margin-top: 100px; 
+  }
+
+
+  table {
+	border-collapse: collapse;
+	width: 100%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+th, td {
+	text-align: left;
+	padding: 8px;
+	border-bottom: 1px solid #ddd;
+}
+
+th {
+	background-color: #f2f2f2;
+}
+
+

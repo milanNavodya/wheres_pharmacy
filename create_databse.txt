@@ -1,0 +1,218 @@
+Create Database
+
+CREATE DATABASE pharmacy
+    WITH 
+    OWNER = openpg
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'English_United States.1252'
+    LC_CTYPE = 'English_United States.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+	
+----------------------Create Sequences for table ids--------------------
+
+#################### id of user table ####################
+-- SEQUENCE: public.user_id_seq
+
+-- DROP SEQUENCE public.user_id_seq;
+
+CREATE SEQUENCE public.user_id_seq
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 2147483647
+    CACHE 1;
+
+ALTER SEQUENCE public.user_id_seq
+    OWNER TO openpg;
+
+#################### id of product table ####################
+-- SEQUENCE: public.product_id_seq
+
+-- DROP SEQUENCE public.product_id_seq;
+
+CREATE SEQUENCE public.product_id_seq
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 2147483647
+    CACHE 1;
+
+ALTER SEQUENCE public.product_id_seq
+    OWNER TO openpg;
+
+#################### id of product_stock table ####################
+-- SEQUENCE: public.product_stock_id_seq
+
+-- DROP SEQUENCE public.product_stock_id_seq;
+
+CREATE SEQUENCE public.product_stock_id_seq
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 2147483647
+    CACHE 1;
+
+ALTER SEQUENCE public.product_stock_id_seq
+    OWNER TO openpg;
+
+#################### id of sales table ####################
+-- SEQUENCE: public.sales_id_seq
+
+-- DROP SEQUENCE public.sales_id_seq;
+
+CREATE SEQUENCE public.sales_id_seq
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 2147483647
+    CACHE 1;
+
+ALTER SEQUENCE public.sales_id_seq
+    OWNER TO openpg;
+
+#################### id of schedule table ####################
+-- SEQUENCE: public.schedule_id_seq
+
+-- DROP SEQUENCE public.schedule_id_seq;
+
+CREATE SEQUENCE public.schedule_id_seq
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 2147483647
+    CACHE 1;
+
+ALTER SEQUENCE public.schedule_id_seq
+    OWNER TO openpg;
+
+
+--------------------------- Create tables --------------------------
+#################### user table ####################
+-- Table: public.user
+
+-- DROP TABLE public."user";
+
+CREATE TABLE public."user"
+(
+    id integer NOT NULL DEFAULT nextval('user_id_seq'::regclass),
+    full_name character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    email character varying(255) COLLATE pg_catalog."default",
+    password character varying(255) COLLATE pg_catalog."default",
+    dob date,
+    gender character varying(10) COLLATE pg_catalog."default",
+    address character varying(255) COLLATE pg_catalog."default",
+    mobile character varying(20) COLLATE pg_catalog."default",
+    user_role character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    "position" character varying(100) COLLATE pg_catalog."default",
+    category character varying(100) COLLATE pg_catalog."default",
+    pharmacy_reg_no character varying(100) COLLATE pg_catalog."default",
+    secret_key character varying COLLATE pg_catalog."default",
+    CONSTRAINT user_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public."user"
+    OWNER to openpg;
+	
+#################### product table ####################
+-- Table: public.product
+
+-- DROP TABLE public.product;
+
+CREATE TABLE public.product
+(
+    id integer NOT NULL DEFAULT nextval('product_id_seq'::regclass),
+    name character varying COLLATE pg_catalog."default" NOT NULL,
+    unit character varying COLLATE pg_catalog."default" NOT NULL,
+    brand character varying COLLATE pg_catalog."default",
+    product_code character varying COLLATE pg_catalog."default",
+    CONSTRAINT product_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.product
+    OWNER to openpg;
+	
+#################### product_stock table ####################
+-- Table: public.product_stock
+
+-- DROP TABLE public.product_stock;
+
+CREATE TABLE public.product_stock
+(
+    quantity integer,
+    price double precision,
+    product_id integer NOT NULL,
+    pharmacy_id integer NOT NULL,
+    brand character varying COLLATE pg_catalog."default",
+    expire_date date,
+    id integer NOT NULL DEFAULT nextval('product_stock_id_seq'::regclass),
+    CONSTRAINT product_stock_pkey PRIMARY KEY (id),
+    CONSTRAINT pharmacy_id_fkey FOREIGN KEY (pharmacy_id)
+        REFERENCES public."user" (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID,
+    CONSTRAINT product_id_fkey FOREIGN KEY (product_id)
+        REFERENCES public.product (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.product_stock
+    OWNER to openpg;
+	
+#################### sales table ####################
+-- Table: public.sales
+
+-- DROP TABLE public.sales;
+
+CREATE TABLE public.sales
+(
+    id integer NOT NULL DEFAULT nextval('sales_id_seq'::regclass),
+    product_id integer,
+    price double precision,
+    order_qty integer,
+    CONSTRAINT product_fkey FOREIGN KEY (product_id)
+        REFERENCES public.product (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.sales
+    OWNER to openpg;
+	
+#################### schedule table ####################
+-- Table: public.schedule
+
+-- DROP TABLE public.schedule;
+
+CREATE TABLE public.schedule
+(
+    id integer NOT NULL DEFAULT nextval('schedule_id_seq'::regclass),
+    doctor_id integer,
+    schedule_date timestamp without time zone,
+    CONSTRAINT schedule_pkey PRIMARY KEY (id),
+    CONSTRAINT doctor_fkey FOREIGN KEY (doctor_id)
+        REFERENCES public."user" (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.schedule
+    OWNER to openpg;
+	
+
+
+
+

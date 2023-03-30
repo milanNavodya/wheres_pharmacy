@@ -1,0 +1,20 @@
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
+
+body{
+    background-color: #80d9f4;: rgb(79,169,195);
+    background-color: linear-gradient(153deg, rgba(79,169,195,1) 0%, rgba(150,222,211,1) 100%);
+}

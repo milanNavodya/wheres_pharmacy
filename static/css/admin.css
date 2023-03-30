@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600|Open+Sans:600&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+
+}
+.sidebar{
+  position: fixed;
+  width: 240px;
+  left: -240px;
+  height: 100%;
+  background: #1e1e1e;
+  transition: all .5s ease;
+}
+.sidebar header{
+  font-size: 28px;
+  color: white;
+  line-height: 70px;
+  text-align: center;
+  background: #1b1b1b;
+  user-select: none;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+#check{
+  display: none;
+}
+label #btn,label #cancel{
+  position: absolute;
+  cursor: pointer;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #262626;
+  margin: 15px 30px;
+  font-size: 29px;
+  background: #262626;
+  height: 45px;
+  width: 45px;
+  text-align: center;
+  line-height: 45px;
+  transition: all .5s ease;
+}
+label #cancel{
+  opacity: 0;
+  visibility: hidden;
+}
+#check:checked ~ .sidebar{
+  left: 0;
+}
+#check:checked ~ label #btn{
+  margin-left: 245px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#check:checked ~ label #cancel{
+  margin-left: 245px;
+  opacity: 1;
+  visibility: visible;
+}
+
+* {
+    box-sizing: border-box;
+  }
+  .openBtn {
+    display: inline-block;
+    justify-content: left;
+    
+  }
+  .openButton {
+    border: none;
+    display: inline-block;
+    border-radius: 5px;
+    width: 220px;
+    background-color: inherit;
+    color: white;
+    padding: 14px 20px;
+    cursor: pointer;
+    position: fixed;
+    font-size: 16px;
+  }
+  .loginPopup {
+    position: relative;
+    text-align: center;
+    width: 100%;
+  }
+  .formPopup {
+    display: none;
+    position: fixed;
+    left: 55%;
+    margin-top: 0px;
+    transform: translate(-50%, 5%);
+    border: 3px solid #999999;
+    z-index: 9;
+  }
+
+  h2, strong {
+    color: #ffffff;
+  }
+  .formContainer {
+    max-width: 500px;
+    align-items: center;
+    padding: 20px;
+    background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,64,121,1) 50%, rgba(0,212,255,1) 100%);
+  }
+  .formContainer input[type=text],
+  .formContainer input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 20px 0;
+    border: none;
+    background: #eee;
+  }
+  .formContainer input[type=text]:focus,
+  .formContainer input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  .formContainer .btn {
+    padding: 12px 20px;
+    border: none;
+    background-color: #0bfb0bd3;
+    color: #fff;
+    cursor: pointer;
+    width: 75%;
+    margin-bottom: 15px;
+    opacity: 0.8;
+  }
+  .formContainer .cancel {
+    background-color: #cc0000;
+  }
+  .formContainer .btn:hover,
+  .openButton:hover {
+    opacity: 1;
+  }
+
+@media(max-width : 860px){
+  .sidebar{
+    height: auto;
+    width: 70px;
+    left: 0;
+    margin: 100px 0;
+  }
+  header,#btn,#cancel{
+    display: none;
+  }
+  
+}
+
+
+
+
+#btn1{
+    width: 200px !important;
+    /* max-width: 100% !important;
+    max-height: 100% !important; */
+    height: 200px !important;
+    text-align: center;
+    padding: 0px;
+    font-size: 15px;
+    margin-top: 100px;
+    margin-left:730px;
+    }
+
+    #btn2{
+        width: 200px !important;
+        /* max-width: 100% !important;
+        max-height: 100% !important; */
+        height: 200px !important;
+        text-align: center;
+        padding: 0px;
+        font-size: 15px;
+        margin-top: 100px;
+        margin-left:500px;
+        }
+        #btn3{
+            width: 200px !important;
+            /* max-width: 100% !important;
+            max-height: 100% !important; */
+            height: 200px !important;
+            text-align: center;
+            padding: 0px;
+            font-size: 15px;
+            margin-top: 330px;
+            margin-left: 730px;
+            }
+            #btn4{
+                width: 200px !important;
+                /* max-width: 100% !important;
+                max-height: 100% !important; */
+                height: 200px !important;
+                text-align: center;
+                padding: 0px;
+                font-size: 15px;
+                margin-top: 330px;
+                margin-left:500px;
+                }
+    
+
+                /* #btn1, #btn2, #btn3, #btn4 {
+                    width: 400px;
+                    height: 400px;
+                    box-sizing: border-box;
+                    border: 1px solid black;
+                  } */
+
+body{
+
+    background: rgb(76, 172, 227);
+}
+
+h4{
+    color:white;
+}

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_5809c55047196e57ae52cc86d0dbc5f5 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_5809c55047196e57ae52cc86d0dbc5f5" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_5809c55047196e57ae52cc86d0dbc5f5 = L.map(
+                "map_5809c55047196e57ae52cc86d0dbc5f5",
+                {
+                    center: [6.905319148115447, 79.86877156795114],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_2a3a2926ededfa2bafe4aaed1fcf90f4 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_5809c55047196e57ae52cc86d0dbc5f5);
+        
+    
+            var marker_ad463f6305a5730540e99315010e2763 = L.marker(
+                [6.893857311, 79.87417282],
+                {}
+            ).addTo(map_5809c55047196e57ae52cc86d0dbc5f5);
+        
+    
+            var icon_46a62b1af26708523725c4e79c3a92d6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "heart", "iconColor": "red", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_ad463f6305a5730540e99315010e2763.setIcon(icon_46a62b1af26708523725c4e79c3a92d6);
+        
+    
+        var popup_97b984153f95710ddb079bb740fd7161 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_cf0c4cda56bd3614ab76f8d9667ae7f7 = $(`<div id="html_cf0c4cda56bd3614ab76f8d9667ae7f7" style="width: 100.0%; height: 100.0%;"><h1> Pharmacy1</h1><img src='where.jpg' width=400px><p>This is the best pharmacy in colombo</p>  Distance from user : 5.42km</div>`)[0];
+                popup_97b984153f95710ddb079bb740fd7161.setContent(html_cf0c4cda56bd3614ab76f8d9667ae7f7);
+            
+        
+
+        marker_ad463f6305a5730540e99315010e2763.bindPopup(popup_97b984153f95710ddb079bb740fd7161)
+        ;
+
+        
+    
+    
+            marker_ad463f6305a5730540e99315010e2763.bindTooltip(
+                `<div>
+                     Bubu Pharmacy
+ Distance from user : 5.42km
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_26f1983d0c3f2873221620fd6cfc3e15 = L.marker(
+                [6.891821916, 79.87817341],
+                {}
+            ).addTo(map_5809c55047196e57ae52cc86d0dbc5f5);
+        
+    
+            var icon_a24a9029f22a410d49850f70543c1ae8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "heart", "iconColor": "blue", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_26f1983d0c3f2873221620fd6cfc3e15.setIcon(icon_a24a9029f22a410d49850f70543c1ae8);
+        
+    
+        var popup_bf0b054af6d6ae4445936c94a01b6d04 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e0e5e7c60f85a802163a47408e7c7de8 = $(`<div id="html_e0e5e7c60f85a802163a47408e7c7de8" style="width: 100.0%; height: 100.0%;"><h1> Pharmacy2</h1><img src='ph2.jpg' width=400px><p>This is the best pharmacy in colombo</p>  Distance from user : 5.85km</div>`)[0];
+                popup_bf0b054af6d6ae4445936c94a01b6d04.setContent(html_e0e5e7c60f85a802163a47408e7c7de8);
+            
+        
+
+        marker_26f1983d0c3f2873221620fd6cfc3e15.bindPopup(popup_bf0b054af6d6ae4445936c94a01b6d04)
+        ;
+
+        
+    
+    
+            marker_26f1983d0c3f2873221620fd6cfc3e15.bindTooltip(
+                `<div>
+                     Lindon's Pharmacy
+ Distance from user : 5.85km
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_351a51587ea3f8be861e81fcd88eee6c = L.marker(
+                [6.9355, 79.8487],
+                {}
+            ).addTo(map_5809c55047196e57ae52cc86d0dbc5f5);
+        
+    
+            var icon_277aa0a7efbb6e86517c8d95785da417 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "heart", "iconColor": "red", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_351a51587ea3f8be861e81fcd88eee6c.setIcon(icon_277aa0a7efbb6e86517c8d95785da417);
+        
+    
+        var popup_dafaa6ca9df3e96828ab256146df1403 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_74dc0a3c425d3c6966c255a7486a9dc7 = $(`<div id="html_74dc0a3c425d3c6966c255a7486a9dc7" style="width: 100.0%; height: 100.0%;">User</div>`)[0];
+                popup_dafaa6ca9df3e96828ab256146df1403.setContent(html_74dc0a3c425d3c6966c255a7486a9dc7);
+            
+        
+
+        marker_351a51587ea3f8be861e81fcd88eee6c.bindPopup(popup_dafaa6ca9df3e96828ab256146df1403)
+        ;
+
+        
+    
+    
+            marker_351a51587ea3f8be861e81fcd88eee6c.bindTooltip(
+                `<div>
+                     User
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_988254b5eb79ecf768e80cef2c115561 = L.circle(
+                [6.9355, 79.8487],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2000.0, "stroke": true, "weight": 3}
+            ).addTo(map_5809c55047196e57ae52cc86d0dbc5f5);
+        
+    
+        var popup_c4b5c99c55469162df56263cfafc740c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3ddea89ff2d766e394de44a041f20915 = $(`<div id="html_3ddea89ff2d766e394de44a041f20915" style="width: 100.0%; height: 100.0%;">Love the Area</div>`)[0];
+                popup_c4b5c99c55469162df56263cfafc740c.setContent(html_3ddea89ff2d766e394de44a041f20915);
+            
+        
+
+        circle_988254b5eb79ecf768e80cef2c115561.bindPopup(popup_c4b5c99c55469162df56263cfafc740c)
+        ;
+
+        
+    
+    
+            var marker_2ca3b4afe65aebf12becd1e2ecddbf55 = L.marker(
+                [6.893857311, 79.87417282],
+                {}
+            ).addTo(map_5809c55047196e57ae52cc86d0dbc5f5);
+        
+    
+            var icon_575a04df3a8dbfde4dc84a80b8beaf3c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "heart", "iconColor": "red", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_2ca3b4afe65aebf12becd1e2ecddbf55.setIcon(icon_575a04df3a8dbfde4dc84a80b8beaf3c);
+        
+    
+        var popup_f1ca31f497cae5e0fc2a960f505b9382 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_81fcf40ca0cc0fb58803bb810da6d500 = $(`<div id="html_81fcf40ca0cc0fb58803bb810da6d500" style="width: 100.0%; height: 100.0%;"><h1> Pharmacy1</h1><img src='where.jpg' width=400px><p>This is the best pharmacy in colombo</p>  Distance from user : 5.42km</div>`)[0];
+                popup_f1ca31f497cae5e0fc2a960f505b9382.setContent(html_81fcf40ca0cc0fb58803bb810da6d500);
+            
+        
+
+        marker_2ca3b4afe65aebf12becd1e2ecddbf55.bindPopup(popup_f1ca31f497cae5e0fc2a960f505b9382)
+        ;
+
+        
+    
+    
+            marker_2ca3b4afe65aebf12becd1e2ecddbf55.bindTooltip(
+                `<div>
+                     Bubu Pharmacy
+ Distance from user : 5.42km
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f50b2335c081f6df3a0412a7bc36c8d5 = L.marker(
+                [6.891821916, 79.87817341],
+                {}
+            ).addTo(map_5809c55047196e57ae52cc86d0dbc5f5);
+        
+    
+            var icon_4656bb5fdeb09e2c7a3c04fe89d500c0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "heart", "iconColor": "blue", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_f50b2335c081f6df3a0412a7bc36c8d5.setIcon(icon_4656bb5fdeb09e2c7a3c04fe89d500c0);
+        
+    
+        var popup_b1935c224052eb6a505cfdbd83e2f202 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_abb34cc25af716fc06a522c30527abe3 = $(`<div id="html_abb34cc25af716fc06a522c30527abe3" style="width: 100.0%; height: 100.0%;"><h1> Pharmacy2</h1><img src='ph2.jpg' width=400px><p>This is the best pharmacy in colombo</p>  Distance from user : 5.85km</div>`)[0];
+                popup_b1935c224052eb6a505cfdbd83e2f202.setContent(html_abb34cc25af716fc06a522c30527abe3);
+            
+        
+
+        marker_f50b2335c081f6df3a0412a7bc36c8d5.bindPopup(popup_b1935c224052eb6a505cfdbd83e2f202)
+        ;
+
+        
+    
+    
+            marker_f50b2335c081f6df3a0412a7bc36c8d5.bindTooltip(
+                `<div>
+                     Lindon's Pharmacy
+ Distance from user : 5.85km
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b69488351ddf2f08dd2a939cb4753dd0 = L.marker(
+                [6.9355, 79.8487],
+                {}
+            ).addTo(map_5809c55047196e57ae52cc86d0dbc5f5);
+        
+    
+            var icon_5dd3d05fb8fc6632ddb2379d0168bce7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "heart", "iconColor": "red", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_b69488351ddf2f08dd2a939cb4753dd0.setIcon(icon_5dd3d05fb8fc6632ddb2379d0168bce7);
+        
+    
+        var popup_6c44503af469d5d83acee5899cc12a86 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4d38f037552127a59781a8925dd65cfe = $(`<div id="html_4d38f037552127a59781a8925dd65cfe" style="width: 100.0%; height: 100.0%;">User</div>`)[0];
+                popup_6c44503af469d5d83acee5899cc12a86.setContent(html_4d38f037552127a59781a8925dd65cfe);
+            
+        
+
+        marker_b69488351ddf2f08dd2a939cb4753dd0.bindPopup(popup_6c44503af469d5d83acee5899cc12a86)
+        ;
+
+        
+    
+    
+            marker_b69488351ddf2f08dd2a939cb4753dd0.bindTooltip(
+                `<div>
+                     User
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_37030d2bd3e4eefd908bd1cf2bca2354 = L.circle(
+                [6.9355, 79.8487],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2000.0, "stroke": true, "weight": 3}
+            ).addTo(map_5809c55047196e57ae52cc86d0dbc5f5);
+        
+    
+        var popup_fc1b2ac79f1df478a904e823e8cf4764 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ef0a55920d44a0d74e5fc40906490469 = $(`<div id="html_ef0a55920d44a0d74e5fc40906490469" style="width: 100.0%; height: 100.0%;">Love the Area</div>`)[0];
+                popup_fc1b2ac79f1df478a904e823e8cf4764.setContent(html_ef0a55920d44a0d74e5fc40906490469);
+            
+        
+
+        circle_37030d2bd3e4eefd908bd1cf2bca2354.bindPopup(popup_fc1b2ac79f1df478a904e823e8cf4764)
+        ;
+
+        
+    
+</script>
+</html>

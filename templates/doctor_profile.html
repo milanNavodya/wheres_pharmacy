@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Profile</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/doctor_profile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/logout.css') }}">
+</head>
+<body style="background-color: #bee0ec;">
+<div class="logocaption"><h2>{{name}}</h2></div>
+<div class="caption text-left">{{category}}</div>
+<h1>Doctor Profile</h1>
+<div class="profile-photo">
+    <!--    <form action="{{ url_for('routes.logout') }}" method="post">-->
+    <!--        <button type="submit" style="">Logout</button>-->
+    <!--    </form>-->
+    <img class="profile-pic" src="{{ url_for('static', filename='images/profile_image.jpg') }}"
+         alt="Doctor profile" onmouseover="showMenu()" onmouseout="hideMenu()">
+    <div id="dropdown-menu" class="dropdown-menu" style="margin-top: -25px; margin-right: 40px; width: 70px;">
+        <a href="{{url_for('routes.logout')}}" onclick="logout()">Logout</a>
+    </div>
+</div>
+
+<!--<div class="time">-->
+<!--    <h4>Patient time: 8AM -10PM</h4>-->
+<!--</div>-->
+
+<div class="wrapper">
+    <div class="wrapper">
+        <input type="radio" name="rate" id="rate1">
+        <label for="rate1"></label>
+        <input type="radio" name="rate" id="rate2">
+        <label for="rate2"></label>
+        <input type="radio" name="rate" id="rate3">
+        <label for="rate3"></label>
+        <input type="radio" name="rate" id="rate4">
+        <label for="rate4"></label>
+        <input type="radio" name="rate" id="rate5">
+        <label for="rate5"></label>
+    </div>
+</div>
+
+<div id="icon-row-box" class="container centerbox">
+    <div class="icon-row">
+        <a href="#">
+            <img class="icons" src="{{ url_for('static', filename='images/tele.png') }}" alt="contact">
+        </a>
+        <a href="#">
+            <img class="icons" src="{{ url_for('static', filename='images/msg.png') }}" alt="message">
+        </a>
+
+    </div>
+</div>
+<div class="outer"style="border-color: #BEE0EC">
+    <div class="card">
+        <img src="{{ url_for('static', filename='images/patient.jpg') }}" class="card-img-top"
+             alt="Successful patients"/>
+        <div class="card-body">
+            <h1 class="card-title">500+</h1>
+            <p class="card-title">Successful patients</p>
+        </div>
+    </div>
+    &nbsp;
+    <a href="{{ url_for('views.doctor_appointments') }}">
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/patient2.png') }}" class="card-img-top"
+                 alt="Today's Appointments"/>
+            <div class="card-body">
+                <h1 class="card-title">49</h1>
+                <p class="card-title">Today's Appointments</p>
+            </div>
+        </div>
+    </a>
+
+</div>
+<script src="{{ url_for('static', filename='js/logout.js') }}"></script>
+</body>
+</html>

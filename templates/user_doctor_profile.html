@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+<div class="logocaption"><h2>Dr. David Warner</h2></div>
+<div class="caption text-left">Oncologist</div>
+<h1>Doctor Profile</h1>
+<div><img src="{{ url_for('static', filename='images/profile_image.jpg') }}" class="profile-photo"></div>
+
+<div class="time">
+    <h3>Patient time: 8AM -10PM</h3>
+</div>
+
+<div class="wrapper">
+    <div class="wrapper">
+        <input type="radio" name="rate" id="rate1">
+        <label for="rate1"></label>
+        <input type="radio" name="rate" id="rate2">
+        <label for="rate2"></label>
+        <input type="radio" name="rate" id="rate3">
+        <label for="rate3"></label>
+        <input type="radio" name="rate" id="rate4">
+        <label for="rate4"></label>
+        <input type="radio" name="rate" id="rate5">
+        <label for="rate5"></label>
+    </div>
+</div>
+
+<div id="icon-row-box" class="container centerbox">
+    <div class="icon-row">
+        <a href="https://www.example.com">
+            <img class="icons" src="{{ url_for('static', filename='images/tele.png') }}" alt="contact">
+        </a>
+        <a href="https://www.example.com">
+            <img class="icons" src="{{ url_for('static', filename='images/msg.png') }}" alt="message">
+        </a>
+
+    </div>
+</div>
+<div class="outer">
+    <div class="card">
+        <img src="{{ url_for(''static', filename='images/patient.jpg') }}" class="card-img-top" alt="Successful Patients"/>
+        <div class="card-body">
+            <h1 class="card-title">500+</h1>
+            <p class="card-title">Successful Patients</p>
+        </div>
+    </div>
+    &nbsp;
+    <div class="card">
+        <img src="{{ url_for('static', filename='images/patient2.png') }}" class="card-img-top" alt="Fissure in Sandstone"/>
+        <div class="card-body">
+            <h1 class="card-title">49</h1>
+            <p class="card-title">Today's Appointments</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="{{ url_for('static', filename='images/experience.png') }}" class="card-img-top" alt="Fissure in Sandstone"/>
+        <div class="card-body">
+            <h1 class="card-title">10 years +</h1>
+            <p class="card-title">Work Experience</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="button">
+    <form action="/user/appointment" method="POST">
+        <input type="submit" class="button" value="Place an Appointment">
+    </form>
+
+</div>
+
+</body>
+</html>

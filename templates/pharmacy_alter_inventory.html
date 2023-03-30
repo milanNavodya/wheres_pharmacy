@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory</title>
+    <style>
+        legend {
+            font-family: "DejaVu Serif", serif;
+            font-size: 20px;
+        }
+
+        .inventory-update {
+            padding: 6px;
+            border: 1px solid #6dabe4;
+            border-radius: 10px;
+            width: 300px;
+            height: 250px;
+            font-family: "DejaVu Serif", serif;
+        }
+
+        .inventory-update input {
+            margin: 5px;
+            height: 25px;
+        }
+
+        .inventory-update select {
+            margin: 5px;
+            height: 25px;
+        }
+
+        .inventory-update button {
+            margin: 20px 5px 10px 5px;
+            border-radius: 5px;
+            background-color: darkseagreen;
+            border-color: transparent;
+            font-size: 15px;
+            height: auto;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body style="background: #8FD5E6;">
+<div>
+    <legend>Create/Update/Delete</legend>
+
+    <form method="POST" action="{{ url_for('views.inventory_update') }}" class="inventory-update">
+        <select name="product" style="width: 100px;">
+            {% for product in products %}
+            <option value="{{ product.id }}" style="height: 10px;">{{ product.name }}</option>
+            {% endfor %}
+        </select>
+        <br/>
+        <input type="text" name="price" placeholder="Price"/><br/>
+        <input type="text" name="quantity" placeholder="Quantity"/><br/>
+        <input type="text" name="brand" placeholder="Brand"/><br/>
+        <input type="date" name="expire_date" placeholder="Expire Date"/><span
+            style="color: firebrick">Expire Date</span><br/>
+
+        <button type="submit" name="inventory" value="create">Create</button>
+        <button type="submit" name="inventory" value="update">Update</button>
+        <button type="submit" name="inventory" value="delete">Delete</button>
+    </form>
+
+</div>
+</body>
+</html>

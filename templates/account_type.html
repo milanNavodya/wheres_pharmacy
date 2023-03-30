@@ -1,0 +1,46 @@
+<html>
+<head>
+
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Account Type</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/account_type.css') }}" rel="stylesheet">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='fonts/material-icon/css/material-design-iconic-font.min.css') }}">
+
+</head>
+
+<body>
+<h1 class="form-title">Select Account Type</h1>
+<div class="leftside">
+    <a href="{{ url_for('views.signup_user') }}">
+        <div class="labelexpanded">
+            <div class="radio-btns">
+                <img src="{{ url_for('static', filename='images/type-user.png') }}"/>
+                <p> Patient </p>
+            </div>
+        </div>
+    </a>
+
+    <a href="{{ url_for('views.signup_pharmacist') }}">
+        <div class="labelexpanded">
+            <div class="radio-btns">
+                <img src="{{ url_for('static', filename='images/type-pharmacy.png') }}"/>
+                <p> Pharmacy </p>
+            </div>
+        </div>
+    </a>
+
+    <a href="{{ url_for('views.signup_doctor') }}">
+        <div class="labelexpanded">
+            <div class="radio-btns">
+                <img src="{{ url_for('static', filename='images/type-doctor.png') }}"/>
+                <p> Doctor </p>
+            </div>
+        </div>
+    </a>
+</div>
+</body>
+
+</html>

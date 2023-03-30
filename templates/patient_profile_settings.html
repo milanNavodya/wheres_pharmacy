@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="{{ url_for('static', filename='css/patient_profile_settings.css') }}" rel="stylesheet">
+
+
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <h1>{{name}}</h1>
+
+
+</div>
+<hr>
+
+<div class="middle-nav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a id="open-form-btn" class="nav-link" href="#">Personal Details</a>
+                </li>
+                <li class="nav-item">
+                    <a id="add-files" class="nav-link" href="#">Medical Reports</a>
+                </li>
+                <li class="nav-item">
+                    <a id="add-appointment" class="nav-link" href="#">My Appointment</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div style="display: none;" id="form-div">
+    <div class="col-lg-8">
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Full Name</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0">{{name}}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Age</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0">{{age}}</p>
+                    </div>
+                </div>
+                <!--                    <hr>-->
+                <!--                    <div class="row">-->
+                <!--                      <div class="col-sm-3">-->
+                <!--                        <p class="mb-0">Height</p>-->
+                <!--                      </div>-->
+                <!--                      <div class="col-sm-9">-->
+                <!--                        <p class="text-muted mb-0">175cm/p>-->
+                <!--                      </div>-->
+                <!--                    </div>-->
+                <!--                    <hr>-->
+                <!--                    <div class="row">-->
+                <!--                      <div class="col-sm-3">-->
+                <!--                        <p class="mb-0">Weight</p>-->
+                <!--                      </div>-->
+                <!--                      <div class="col-sm-9">-->
+                <!--                        <p class="text-muted mb-0">86kg</p>-->
+                <!--                      </div>-->
+                <!--                    </div>-->
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Gender</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0">{{gender}} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="display: none;" id="file-container">
+    <div class="container">
+        <label for="upload_costum" class="upload_label">
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p class="drag_text">Drag & Drop to Upload File</p>
+            <input type="file" class="upload_hide" id="upload_costum" multiple value="Choose a File">
+        </label>
+    </div>
+</div>
+
+
+<div style="display: none" id="appointmentViewer">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Appointment ID</th>
+                <th scope="col">Date</th>
+                <th scope="col">Venue</th>
+                <th scope="col">Doctor</th>
+            </tr>
+            </thead>
+
+        </table>
+    </div>
+</div>
+
+
+<script>
+    const filecontainerDiv = document.getElementById("file-container");
+    const tableDiv = document.getElementById("form-div");
+    const appointmentContainerDiv = document.getElementById("appointmentViewer");
+
+    function getTable() {
+        // var tableDiv = document.getElementById("form-div");
+        var tableHtml = tableDiv.innerHTML;
+        tableDiv.style.display = "block";
+        filecontainerDiv.style.display = "none";
+        appointmentContainerDiv.style.display = "none";
+    }
+
+    document.getElementById("open-form-btn").addEventListener("click", getTable);
+
+    function getFile() {
+        // var filecontainerDiv = document.getElementById("file-container");
+        var tableHtml = filecontainerDiv.innerHTML;
+        filecontainerDiv.style.display = "block";
+        tableDiv.style.display = "none";
+        appointmentContainerDiv.style.display = "none";
+    }
+
+    document.getElementById("add-files").addEventListener("click", getFile);
+
+    function getAppointment() {
+        // var appointmentContainerDiv = document.getElementById("appointmentViewer");
+        var tableHtml = appointmentContainerDiv.innerHTML;
+        appointmentContainerDiv.style.display = "block";
+        tableDiv.style.display = "none";
+        filecontainerDiv.style.display = "none";
+    }
+
+    document.getElementById("add-appointment").addEventListener("click", getAppointment);
+
+</script>
+
+</body>
+</html>
+        

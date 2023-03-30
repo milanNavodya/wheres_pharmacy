@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile3.css') }}">
+</head>
+<body>
+<div class="logocaption"><h2>Dr. {{name}}</h2></div>
+<div class="caption text-left">{{category}}</div>
+<h1>Doctor Profile</h1>
+
+<!--<form class="search-bar">-->
+<!--    <div class="search-bar-group">-->
+<!--        <table>-->
+<!--            <tr>-->
+<!--                <td><input class="form-control" type="search" placeholder="Search" aria-label="Search"></td>-->
+<!--                <td>-->
+<!--                    <button class="btn-search" type="submit">Search<i class="fas fa-search"></i></button>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--        </table>-->
+<!--    </div>-->
+<!--</form>-->
+
+<div class="Appointments">
+    <table>
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Patient Name</th>
+            <th>Doctor Name</th>
+            <th>Hospital</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>2023-03-01</td>
+            <td>10:00 AM</td>
+            <td>Steve Smith</td>
+            <td>Dr. David Warner</td>
+            <td>Asiri Surgical</td>
+        </tr>
+        <tr>
+            <td>2023-03-02</td>
+            <td>2:30 PM</td>
+            <td>Marnus Labuschagne</td>
+            <td>Dr. David Warner</td>
+            <td>Asiri Surgical</td>
+        </tr>
+        <tr>
+            <td>2023-03-03</td>
+            <td>9:15 AM</td>
+            <td>Glenn Maxwell</td>
+            <td>Dr. David Warner</td>
+            <td>Asiri Surgical</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
