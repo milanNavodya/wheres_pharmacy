@@ -15,8 +15,11 @@ def login():  # define login page function
         email = request.form.get('email')
         password = request.form.get('password')
         remember = True if request.form.get('remember-me') else False
-        user = User.query.filter_by(email=email).first()  # check if the user actually exists
-        # take the user-supplied password, hash it, and compare it to the hashed password in the database
+        try:
+            user = User.query.filter_by(email=email).first()  # check if the user actually exists
+        except Exception as e:
+            flash('An error occurred. Please try again.')
+            return redirect(url_for('routes.login'))
 
         if not user:
             return redirect(url_for('views.user_type'))
