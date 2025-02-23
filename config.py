@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from sqlalchemy_utils import database_exists, create_database
 
 
 db = SQLAlchemy()
@@ -9,7 +10,16 @@ db = SQLAlchemy()
 def create_app():
     app = Flask(__name__)  # create instance of flask
     app.config['SECRET_KEY'] = 'secret-key-goes-here'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://openpg:openpgpwd@localhost/pharmacy'
+    db_name = 'pharmacy'
+    db_uri = f'postgresql://openpg:openpgpwd@localhost/{db_name}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+
+    # Check if the database exists
+    if not database_exists(db_uri):
+        print("Initializing database...")
+        create_database(db_uri, encoding="utf8",)
+        print("Database created successfully.")
+
     # Connect to the database
     db.init_app(app)
     login_manager = LoginManager()
