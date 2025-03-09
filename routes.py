@@ -18,7 +18,7 @@ def login():  # define login page function
         try:
             user = User.query.filter_by(email=email).first()  # check if the user actually exists
         except Exception as e:
-            flash('An error occurred. Please try again.')
+            # flash('An error occurred. Please try again.')
             return redirect(url_for('routes.login'))
 
         if not user:

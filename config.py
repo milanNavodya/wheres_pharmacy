@@ -22,6 +22,7 @@ def create_app():
 
     # Connect to the database
     db.init_app(app)
+
     login_manager = LoginManager()
     login_manager.login_view = 'routes.index'
     login_manager.init_app(app)
