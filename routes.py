@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash, session
+from sqlalchemy.exc import DataError
 from werkzeug.security import generate_password_hash, check_password_hash
 from models import User
 from flask_login import login_user, logout_user, login_required
@@ -102,8 +103,13 @@ def signup():  # define the signup function
                         address=address, mobile=mobile, position=position, category=category,
                         pharmacy_reg_no=pharmacy_reg_no, user_role=user_type, secret_key=secret_key)
         # add the new user to the database
-        db.session.add(new_user)
-        db.session.commit()
+        try:
+            db.session.add(new_user)
+            db.session.commit()
+        except DataError:
+            return redirect(url_for('views.page_not_found'))
+        except Exception as e:
+            return redirect(url_for('views.page_not_found'))
         return redirect(url_for('routes.login'))
 
 

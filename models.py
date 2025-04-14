@@ -7,7 +7,7 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     full_name = db.Column(db.String(200))
     email = db.Column(db.String(40), unique=True)
-    password = db.Column(db.String(100))
+    password = db.Column(db.String())
     gender = db.Column(db.String(20))
     dob = db.Column(db.DateTime)
     address = db.Column(db.String(100))
